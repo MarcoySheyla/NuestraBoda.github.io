@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Invitación</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23d4a574'>💌</text></svg>">
+
+  <!-- FUENTES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&family=Libre+Baskerville:wght@400;700&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ========================================
+       SECCIÓN 1: SOBRE (Aparece primero)
+       ======================================== -->
+  <div class="container" id="container">
+    <img src="sobre.png" class="sobre base" id="base" alt="Sobre base">
+
+    <!-- interior (profundidad real) -->
+    <div class="interior" id="interior"></div>
+
+    <img src="solapa.png" class="sobre flap" id="flap" alt="Solapa del sobre">
+
+    <div class="flash" id="flash"></div>
+  </div>
+
+  <!-- ========================================
+       SECCIÓN 2: CONTENIDO DE BODA (Aparece después del sobre)
+       ======================================== -->
+  <div id="content-page2" class="content-page2-hidden">
+
+    <!-- AUDIO -->
+    <audio id="music" loop preload="auto">
+      <source src="melodia.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="audio-toggle" class="audio-toggle" aria-pressed="false" aria-label="Reproducir música">
+      ▶ Reproducir música
+    </button>
+
+    <!-- HERO -->
+    <header class="hero">
+
+      <!-- CAPA 1: VIDEO DE FONDO -->
+      <div class="hero-bg-video" aria-hidden="true">
+        <video autoplay loop muted playsinline preload="metadata">
+          <source src="video.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- CAPA 3: OVERLAY -->
+      <div class="hero-overlay"></div>
+
+      <!-- CAPA 4: CONTENIDO -->
+      <div class="contenido-boda animate">
+        <p class="pre">NOS CASAMOS</p>
+
+        <h1 class="nombres">
+          <span class="nombre">Marco</span>
+          <span class="amp">&amp;</span>
+          <span class="nombre">Sheyla</span>
+        </h1>
+
+        <p class="fecha">01 de Agosto de 2026</p>
+      </div>
+
+    </header>
+
+    <!-- SECCIÓN 3 PALABRAS -->
+    <section class="story-section animate">
+
+      <div class="story-text" tabindex="0" role="button" aria-pressed="false">
+        <p>
+          "Y sobre todas las cosas, vistanse de amor<br>
+          que es el vinculo perfecto"<br>
+          Colosenses 3:14
+        </p>
+      </div>
+
+      <div class="story-lettering">
+        <img src="img/lettering.png" alt="Lettering" loading="lazy">
+      </div>
+
+      <!-- CONTADOR INCORPORADO EN HISTORIA -->
+      <div class="story-countdown">
+        <h2 class="countdown-title">Cuenta Atras</h2>
+        
+        <p class="countdown-subtext">
+           Prepárate para el día más especial de nuestras vidas.
+            </p>
+
+
+        <div class="countdown-grid">
+          <div class="countdown-item">
+            <span id="days" class="countdown-number">000</span>
+            <span class="countdown-label">Días</span>
+          </div>
+
+          <div class="countdown-item">
+            <span id="hours" class="countdown-number">00</span>
+            <span class="countdown-label">Horas</span>
+          </div>
+
+          <div class="countdown-item">
+            <span id="minutes" class="countdown-number">00</span>
+            <span class="countdown-label">Minutos</span>
+          </div>
+
+          <div class="countdown-item">
+            <span id="seconds" class="countdown-number">00</span>
+            <span class="countdown-label">Segundos</span>
+          </div>
+        </div>
+      </div>
+
+      <picture class="story-bg" aria-hidden="true">
+        <source srcset="img/uno-desktop.png" media="(min-width: 769px)">
+        <source srcset="img/uno-mobile.png" media="(max-width: 768px)">
+        <img src="img/uno-desktop.png" alt="Flores" loading="lazy">
+      </picture>
+
+    </section>
+    
+<!-- =========================================================
+   SECCIÓN 3: DETALLES
+========================================================= -->
+<section class="details-section">
+
+  <!-- 2.1 Imagen -->
+  <img src="img/Seccion3uno.png" alt="detalle" class="details-img-top">
+
+  <!-- 2.2 Título -->
+  <h2 class="details-title">Los detalles</h2>
+
+  <!-- 2.3 Subtítulo -->
+  <p class="details-subtitle">Todo lo que tienes que saber</p>
+
+  <!-- 2.X Imagen decorativa horizontal -->
+  <img src="img/Seccion3dosmedio.png" alt="decoracion" class="details-divider">
+
+  <!-- 2.4 Imagen -->
+  <img src="img/Seccion3dos.png" alt="ceremonia" class="details-img">
+
+  <!-- 2.5 Título sección -->
+  <h3 class="details-block-title">Ceremonia Religiosa</h3>
+
+  <!-- 2.6 Hora -->
+  <p class="details-time">12:00 AM</p>
+
+  <!-- 2.7 Caja dirección -->
+  <div class="details-box">
+    Dirección
+  </div>
+
+  <!-- 2.8 Botón -->
+  <a href="https://maps.app.goo.gl/ru6bivnLvoSAwZSQ6" target="_blank" class="details-button">
+    Ver ubicación
+  </a>
+
+  <!-- 2.9 Imagen -->
+  <img src="img/Seccion3tres.png" alt="recepción" class="details-img">
+
+  <!-- 2.10 Título -->
+  <h3 class="details-block-title">Recepción</h3>
+
+  <!-- 2.11 Texto -->
+  <p class="details-text">Después de la ceremonia celebraremos en</p>
+
+  <!-- 2.12 Caja -->
+  <div class="details-box">
+    Dirección
+  </div>
+
+  <!-- Botón -->
+  <a href="https://maps.app.goo.gl/ru6bivnLvoSAwZSQ6" target="_blank" class="details-button">
+    Ver ubicación
+  </a>
+
+</section>
+
+<!-- =========================================================
+     SECCIÓN 4: DETALLES2
+     Base estructural: igual que .details-section (columna centrada)
+========================================================= -->
+<section class="details2-section" id="details2">
+
+  <!-- 2.1 Imagen -->
+  <img src="img/Seccion4uno.png" alt="Código de vestimenta" class="details2-img d2-mt-start">
+
+  <!-- separación 2px -->
+  <div class="d2-mt-2"></div>
+
+  <!-- 2.2 Caja título -->
+  <div class="details2-title">Codigo de Vestimenta</div>
+
+  <!-- separación 1px -->
+  <div class="d2-mt-1"></div>
+
+  <!-- 2.3 Caja texto -->
+  <div class="details2-text">Elegante</div>
+
+  <!-- separación 5px -->
+  <div class="d2-mt-5"></div>
+
+  <!-- 2.4 Imagen -->
+  <img src="img/Seccion4dos.png" alt="Regalos" class="details2-img">
+
+  <!-- separación 3px -->
+  <div class="d2-mt-3"></div>
+
+  <!-- 2.5 Caja título -->
+  <div class="details2-title">Regalos</div>
+
+  <!-- separación 1px -->
+  <div class="d2-mt-1"></div>
+
+  <!-- 2.6 Caja texto -->
+  <div class="details2-text">
+    Tu presencia es el mejor regalo que podemos recibir, pero si deseas hacernos un detalle lo puedes hacer aquí:
+  </div>
+
+  <!-- separación 1px -->
+  <div class="d2-mt-1"></div>
+
+  <!-- 2.7 Botón Aportación -->
+  
+<div class="details2-video-wrap" id="d2VideoWrap">
+  <button type="button" class="details2-button" id="d2VideoBtn" aria-expanded="false">
+    <span class="details2-button-text">Aportación</span>
+  </button>
+
+  <!-- ✅ CUADRO VERDE SUPERPUESTO (reemplaza al video uno.mp4) -->
+  <div class="gift-pop" id="d2GiftPop" aria-hidden="true">
+       <button type="button" class="gift-toggle" id="toggleYape" aria-expanded="false">
+      Mostrar YAPE
+    </button>
+    <div class="gift-reveal" id="yapeData" hidden>
+      minumero de yape
+    </div>
+
+    <button type="button" class="gift-toggle" id="toggleIbam" aria-expanded="false">
+      Mostrar IBAM
+    </button>
+    <div class="gift-reveal" id="ibamData" hidden>
+      Micuenta
+    </div>
+  </div>
+</div>
+
+    
+  <!-- separación 2.5px -->
+  <div class="d2-mt-25"></div>
+
+  <!-- 2.9 Imagen -->
+  <img src="img/Seccion4tres.png" alt="Confirmación" class="details2-img">
+
+  <!-- separación 2.5px -->
+  <div class="d2-mt-25"></div>
+
+  <!-- 2.10 Caja título -->
+  <div class="details2-title">Confirma tu Asistencia</div>
+
+  <!-- separación 1px -->
+  <div class="d2-mt-1"></div>
+
+  <!-- 2.11 Caja texto -->
+  <div class="details2-text">Tu presencia es importante para nosotros</div>
+
+  <!-- separación 5px -->
+  <div class="d2-mt-5"></div>
+
+  <!-- 2.12 Botón Formulario -->
+  <button type="button" class="details2-button" id="d2FormBtn" aria-expanded="false">
+    <span class="details2-button-text">Confirma tu asistencia</span>
+  </button>
+
+  <!-- separación 5px (editable si quieres menos/0) -->
+  <div class="d2-mt-5"></div>
+
+  <!-- 2.9 (final) Imagen fin: ocupa todo el ancho y sin margen inferior -->
+  <img src="img/seccion4fin.png" alt="Fin sección" class="details2-footer-img">
+
+</section>
+
+<!-- =========================================================
+     FORMULARIO OVERLAY (NO mueve elementos)
+========================================================= -->
+<div class="details2-modal" id="d2Modal" aria-hidden="true">
+
+  <div class="details2-modal-backdrop" id="d2Backdrop"></div>
+
+  <form class="details2-form" id="d2Form"
+        action="https://formspree.io/f/xzdwpwpk"
+        method="POST">
+
+    <!-- 1 -->
+    <label class="details2-label" for="d2Name">Nombre Completo</label>
+    <input class="details2-input" id="d2Name" name="nombre_completo" type="text" required>
+
+    <div class="d2-space-4"></div>
+
+    <!-- 5 -->
+    <label class="details2-label" for="d2Phone">Telefono</label>
+    <input class="details2-input" id="d2Phone" name="telefono" type="tel" inputmode="tel">
+
+    <div class="d2-space-4"></div>
+
+   
+<!-- 8 - BLOQUE INVITADOS -->
+<div class="details2-grid">
+
+  <!-- COLUMNA IZQUIERDA -->
+  <div class="col-left">
+
+    <label class="details2-label" for="d2Guests">
+      Numero de invitados (incluyendote)
+    </label>
+
+    <div class="details2-row-left">
+      <span class="details2-pases">Hemos reservado para ti:</span>
+      <span class="details2-pill">2</span>
+      <span class="details2-reservado">Pases</span>
+      
+    </div>
+
+  </div>
+
+  <!-- COLUMNA DERECHA -->
+  <div class="col-right">
+
+    <input class="details2-input"
+      id="d2Guests"
+      name="numero_invitados"
+      type="number"
+      inputmode="numeric"
+      min="1"
+      max="2"
+      step="1"
+      required>
+
+  </div>
+
+</div>
+
+<!-- ESPACIO FUERA DEL GRID -->
+<div class="d2-space-4"></div>
+
+<!-- BOTÓN FUERA DEL GRID ✅ -->
+
+<div class="details2-submit-wrap">
+
+  <button type="submit" class="details2-submit" id="d2Submit">
+    <span class="details2-submit-text">enviar</span>
+  </button>
+
+</div>
+
+
+  </form>
+</div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
