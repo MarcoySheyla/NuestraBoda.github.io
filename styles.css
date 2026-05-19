@@ -98,7 +98,7 @@ body {
   overflow: hidden;
   background: white;
   touch-action: manipulation;
-  height: calc(var(--vh) * 100);
+  height: 100vh;
 }
 
 .sobre {
@@ -317,8 +317,7 @@ body {
 .story-section {
   position: relative;
   width: 100%;
-  min-height: auto;
-  min-height: calc(var(--vh) * 100);
+  min-height: 100vh;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -341,7 +340,8 @@ body {
   max-width: 700px;
   z-index: 2;
   margin: 0;
-  transform: translateY(clamp(120px, 20vh, 280px)); /* 🔥 AQUÍ CONTROLAS TODO */
+  transform: translateY(clamp(180px, 45vh, 220px)); /* 🔥 AQUÍ CONTROLAS TODO */
+  margin-top: clamp(60px, 12vh, 180px);
 }
 
 .story-section::after {
@@ -356,12 +356,11 @@ body {
 /* Fondo responsive (picture) */
 .story-bg {
   position: absolute;
-  bottom: clamp(10px, 1.5vh, 20px);
+  bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
   z-index: 1;
-  margin-bottom: -10px;;
 }
 .story-bg img {
   width: 100%;
@@ -616,20 +615,12 @@ body {
   transform: translateX(-50%) translateY(85px);
 }
 
-.story-countdown {
-  transform: translateY(220px);
-}
-
 .story-text {
   transform: translateY(25px);
 }
 
 .countdown-grid {
   gap: 9px;
-}
-.story-section {
-  min-height: calc(var(--vh) * 80);
-
 }
 
 }
