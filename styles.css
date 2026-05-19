@@ -341,7 +341,7 @@ body {
   max-width: 700px;
   z-index: 2;
   margin: 0;
-  transform: translateY(320px); /* 🔥 AQUÍ CONTROLAS TODO */
+  transform: translateY(clamp(120px, 20vh, 280px)); /* 🔥 AQUÍ CONTROLAS TODO */
 }
 
 .story-section::after {
