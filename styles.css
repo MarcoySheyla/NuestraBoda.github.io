@@ -315,67 +315,54 @@ body {
    ========================================================= */
 
 .story-section {
-  position: relative;
   width: 100%;
-  min-height: 100vh;
-  height: auto;
+  background: #ffffff;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* ✅ CONTROL GLOBAL RESPONSIVE */
-  justify-content: flex-start;
-  /* ✅ separación automática entre elementos */
-  gap: clamp(2px, 2vh, 12px);
-  isolation: isolate;
-  background: #ffffff;
-  padding: clamp(20px, 4vh, 40px) var(--section-pad);
-  /* ✅ espacio inferior para fondo */
-  padding-bottom: clamp(60px, 10vh, 120px);
-  overflow: hidden
+
+  /* ✅ espacio REAL */
+  padding: 16px 0 0;
+
+  /* ✅ controla TODAS las separaciones */
+  gap: 5px;
+
+  position: relative;
 }
+
+
 
 .story-countdown {
-  position: relative;
-  width: 100%;
-  max-width: 700px;
-  z-index: 2;
-  margin: 0;
-  transform: translateY(clamp(180px, 45vh, 220px)); /* 🔥 AQUÍ CONTROLAS TODO */
-  margin-top: clamp(60px, 12vh, 180px);
-}
-
-.story-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.04));
-  z-index: 0;
-  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0; /* 🔥 CLAVE */
 }
 
 /* Fondo responsive (picture) */
 .story-bg {
-  position: absolute;
-  bottom: 0;
+  margin-top: 0;
+  width: 100%;
   left: 0;
   right: 0;
-  width: 100%;
   z-index: 1;
 }
+
 .story-bg img {
   width: 100%;
-  height: auto;
-  object-fit: cover;
   display: block;
 }
 
+
 .story-lettering {
-  position: absolute;  /* 🔥 CLAVE → fuera del flujo */
-  left: 50%;           /* centra horizontalmente */
-  transform: translateX(-50%) translateY(115px); /* mueve libremente */
+ 
   width: clamp(200px, 50vw, 340px);
   max-width: 480px;
   z-index: 2;
+  margin-bottom: clamp(35px, 5vw, 60px);
+  margin-top:clamp(35px, 5vw, 60px);
 }
 
 .story-lettering img {
@@ -389,14 +376,11 @@ body {
 .story-text {
   position: relative;
   z-index: 2;
-  width: clamp(240px, 85vw, 540px);
-  margin: 0 auto;
+  width: min(85vw, 540px);
+  margin-top: clamp(30px, 4vw, 50px);
   text-align: center;
   padding: clamp(10px, 2vw, 18px);
- 
-  transform: translateY(10px); /* ✅ SOLO vertical */
 }
-
 
 .story-text p {
   font-family: var(--font-serif);
@@ -412,25 +396,19 @@ body {
 /* Título */
 
 .countdown-title {
-  position: absolute;  /* 🔥 fuera del flujo */
-  left: 50%;           /* centra horizontalmente */
-  transform: translateX(-50%) translateY(-120px); /* controla posición */
+  text-align: center;
   font-family: var(--font-script);
   font-weight: 200;
   font-size: clamp(40px, 7vw, 60px);
   color:#2b2b2b95;
   z-index: 2;
-  margin: 0;
+  margin-bottom:-20px;
 }
 
 .countdown-subtext{
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50px); /* 🔥 ajusta distancia respecto al título */
-  
   font-family: var(--font-serif); /* Libre Baskerville */
   font-size: clamp(11px, 2vw, 16px);
-  
+  margin-bottom: clamp(5px, 1.5vh, 20px);
   color: #2b2b2b95;
   text-align: center;
   width: clamp(220px, 70vw, 500px); /* evita que se estire demasiado */
@@ -459,8 +437,11 @@ body {
   gap: 5px;
   justify-content: center;
   text-align: center;
-  min-width: 65px;
-  padding: clamp(10px, 1.5vw, 14px);
+
+  width: clamp(80px, 20vw, 120px);
+  height: clamp(70px, 18vw, 100px);
+  padding: 12px;
+  
   border-radius: var(--radius-card);
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
@@ -533,97 +514,22 @@ body {
 /* =========================================================
    RESPONSIVE (TABLET / MÓVIL)
    ========================================================= */
-@media (max-width: 1024px) {
-  .audio-toggle {
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
-    bottom: 12px;
-    right: 12px;
-  }
-}
 
 /* =========================================================
    MOVIL
    ========================================================= */
 
+
 @media (max-width: 768px) {
 
-/* PANTALLA DE INICIO */
-
-  /* HERO */
-   .sobre {
-    width: 100%;
-    height: 100%;
-    max-width: 200vw;
-    max-height: 200vh;
-  }
-  .contenido-boda {
-    line-height: 2.8;
-    gap: clamp(12px, 3vw, 20px);
-  }
-
-  .pre {
-    line-height: 6;
-    font-size: clamp(14px, 2.8vw, 22px);
-  }
-
-  .nombre {
-    font-size: clamp(80px, 14vw, 130px);
-  }
-
-  .amp {
-    font-size: clamp(26px, 8vw, 50px);
-  }
-
-  .fecha {
-    font-size: clamp(26px, 7vw, 44px);
-  }
-
-  .audio-toggle {
-    padding: 0.65rem 0.9rem;
-    font-size: 0.75rem;
-    bottom: 8px;
-    right: 8px;
-    border-radius: 20px;
-  }
-/*        SEGUNDA SECCION         */
-  /* CONTADOR */
-  .countdown-title {
-    font-size: clamp(32px, 5vw, 56px);
-    transform: translateX(-50%) translateY(-95px);
-  }
-
   .countdown-grid {
-    grid-template-columns: repeat(2, 130px); /* ✅ columnas fijas */
-    justify-content: center;               /* ✅ centra el bloque */
-    gap: 10px;  
-
+    grid-template-columns: repeat(2, 120px);
+    gap: 10px;
   }
 
-  .countdown-item {
-  width:90px;
-  height: 70px;
-  }
-
-  .countdown-item:not(:last-child)::after {
-    content: none;
-  }
-
-/* GENERAL */
-
-.story-lettering {
-  transform: translateX(-50%) translateY(85px);
-}
-
-.story-text {
-  transform: translateY(25px);
-}
-
-.countdown-grid {
-  gap: 9px;
-}
 
 }
+
 /* Pantallas muy pequeñas */
 @media (max-width: 480px) {
   .hero { height: 100dvh; }
@@ -634,8 +540,6 @@ body {
   }
   .story-bg{ max-height: 35%; }
   .nombre { font-size: clamp(60px, 10vw, 100px); }
-
-  .story-countdown { margin-top: 8px; }
   .countdown-grid { gap: 8px; }
   .countdown-item { padding: 8px; min-height: 60px; }
 }
