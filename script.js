@@ -429,3 +429,28 @@ if (toggleIbam && ibamData) {
     }
   });
 })();
+
+
+/* =========================================================
+   ITINERARIO: activar animación al entrar en pantalla
+   (compatible con tu .animate / .visible)
+========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const it2Els = document.querySelectorAll(".it2-section, .it2-row");
+
+  if (!("IntersectionObserver" in window)) {
+    it2Els.forEach(el => el.classList.add("visible"));
+    return;
+  }
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.18 });
+
+  it2Els.forEach(el => obs.observe(el));
+});
