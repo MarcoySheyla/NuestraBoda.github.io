@@ -326,7 +326,7 @@ body {
   padding: 16px 0 0;
 
   /* ✅ controla TODAS las separaciones */
-  gap: 5px;
+  gap: 35px;
 
   position: relative;
 }
@@ -543,10 +543,6 @@ body {
 /* AJUSTE SOLO PARA PC */
 @media (min-width: 769px) {
 
-  .story-section {
-    gap: 8px; /* 🔥 control real del espacio */
-  }
-
   .story-text {
     margin-top: 8px;
   }
@@ -575,18 +571,167 @@ body {
   }
 }
 
+
+
+/* =ITINERARIO (estructura simple tipo SECCIÓN 4)========================================================
+ / centro / derecha) */   
+.it2-row{
+  display: grid;
+  grid-template-columns: 1fr var(--it2-mid) 1fr;
+  align-items: center;
+  position: relative;
+  min-height: clamp(20px, 4vh, 30px);
+}
+
+/* Línea central */
+.it2-mid{
+  position: relative;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.it2-mid::before{
+  content: "";
+  position: absolute;
+  top: -12px;
+  bottom: -12px;
+  left: 50%;
+  width: var(--it2-line);
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.80);
+  border-radius: 2px;
+}
+
+/* Marcador corazón en cada fila */
+.it2-row::after{
+  content: "♡";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: clamp(16px, 3vw, 22px);
+  height: clamp(16px, 3vw, 22px);
+  display: grid;
+  place-items: center;
+
+  color: #fff;
+  font-size: clamp(10px, 2vw, 14px);
+  line-height: 1;
+
+  border: 2px solid rgba(255,255,255,0.90);
+  border-radius: 999px;
+  background: #7A8450; /* recorta la línea detrás */
+}
+
+/* Columnas */
+.it2-col{
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* ✅ centrado */
+  justify-content: center;
+  text-align: center;   /* ✅ textos centrados */
+  gap: 3px;
+}
+
+/* Icono */
+.it2-icon{
+  width: var(--it2-icon);
+  height: auto;
+  display: block;
+  margin-bottom: clamp(6px,1.5vw,8px);
+}
+
+/* Texto */
+.it2-time,
+.it2-text{
+  font-family: var(--font-serif);
+  font-size: var(--it2-text);
+  color: #fff;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Ajuste sutil para que quede elegante */
+.it2-time{ opacity: 0.95; }
+.it2-text{ opacity: 1; }
+
+/* ==========================
+   RESPONSIVE FINO (móvil)
+   Mantiene alternancia y centra todo sin romper
+========================== */
+@media (max-width: 768px){
+  .it2-section{
+    --it2-max: min(92vw, 420px);
+    --it2-mid: 30px;
+  }
+}
+/*   Fondo oliva #7A8450 + todo blanco + columnas alternas
+========================================================= */
+
+.it2-section{
+  width: 100%;
+  background: #7A8450; /* ✅ fondo oliva */
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* ✅ fácil de editar (como sección 4) */
+  --it2-pad-y: clamp(40px, 25vh, 80px);
+  --it2-gap: clamp(10px, 2vh, 18px);
+
+  /* ✅ tamaños base móvil pedidos */
+  --it2-icon: clamp(45px, 20vw, 120px);   /* 25px móvil → sube en PC */
+  --it2-text: clamp(11px, 1.5vw, 16px);  /* 9px móvil → sube en PC */
+
+  /* ✅ línea y separación de columnas */
+  --it2-line: 2px;
+  --it2-mid: clamp(10px, 3vw, 20px);    /* zona central de la línea */
+  --it2-max: min(92vw, 560px);
+
+  padding: var(--it2-pad-y) 0;
+  gap: var(--it2-gap);
+}
+
+/* Título (estilo elegante) */
+.it2-title{
+  font-family: var(--font-script);
+  font-size: clamp(50px, 10vw, 80px);
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: clamp(20px,6vw,30px);
+  text-align: center;
+}
+
+/* Contenedor */
+.it2-wrap{
+  width: var(--it2-max);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2px, 0.5vh, 6px);
+  position: relative;
+}
+
+
+
+
+
 /* =========================================================
     SECCIÓN 3: DETALLES
     ========================================================= */
 
   .details-section {
     width: 100%;
-    background: #7A8450;
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: clamp(10px, 3vh, 20px) 0;
-    gap: 7px; /* 🔥 control global fácil */
+    gap: 5px; /* 🔥 control global fácil */
+    padding-bottom: 0;
   }
 
   /* -----------------------------
@@ -624,7 +769,7 @@ body {
   .details-title {
     font-family: var(--font-script),cursive;
     font-size: clamp(62px, 15vw, 90px);
-    color: white;
+    color: #7A8450;
     margin-top: -6px;
     font-weight: normal;
   }
@@ -632,28 +777,28 @@ body {
   .details-subtitle {
     font-family: var(--font-script);
     font-size: clamp(20px, 6vw, 30px);
-    margin-top: -15px;
-    color: white;
+    margin-top: -18px;
+    color: #838380;
     margin-bottom: clamp(12px, 1.5vw, 14px);
   }
 
   .details-block-title {
    font-family: 'Great Vibes', cursive;
     font-size: clamp(32px, 6vw, 45px);
-    color: white;
+    color: #7A8450;
     font-weight: normal;
   }
 
   .details-time {
     font-family: 'Libre Baskerville', serif;
     font-size: clamp(10px, 2.5vw, 18px);
-    color: rgb(255, 255, 255);
+    color: #838380;
   }
 
   .details-text {
     font-family: 'Libre Baskerville', serif;
     font-size: clamp(10px, 2.5vw, 18px);
-    color: white;
+    color: #838380;
   }
 
   /* -----------------------------
@@ -666,7 +811,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     border-radius: 10px;
     height: clamp(24px, 4vw, 34px);
     background: #9aa37a; /* 🔥 3 tonos más claro aprox */
@@ -680,7 +825,7 @@ body {
     BOTÓN
   ----------------------------- */
 
-  .details-button {
+  .details-button{
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -693,7 +838,8 @@ body {
     text-decoration: underline;
     border-radius: 20px;
     transition: all 0.3s ease;
-     margin-bottom: 45px;
+    margin-bottom: 5px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
   }
 
   /* interacción click */
@@ -720,13 +866,13 @@ body {
 
 .details2-section{
   width: 100%;
-  background: #ffffff;
+  background: #7A8450;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  padding: clamp(10px, 3vh, 20px) 0 0;
+  padding: clamp(15px, 5vh, 30px) 0 60px;
 }
 
 /* Tamaños y tipografías */
@@ -740,15 +886,15 @@ body {
 .details2-title{
   font-family: 'Great Vibes', cursive;
   font-size: clamp(32px, 6vw, 45px);
-  color: #7A8450;
+  color: #ffffff;
   margin-top: 6px;
   text-align: center;
 }
 
 .details2-text{
   font-family: var(--font-serif);
-  font-size: clamp(9px, 2vw, 18px);
-  color: #000;
+  font-size: clamp(10px, 2vw, 18px);
+  color: #ffffff;
   margin-bottom: clamp(8px, 1.5vw, 12px);
   text-align: center;
 
@@ -762,10 +908,9 @@ body {
   height: clamp(28px, 4vw, 34px);
   padding: 0 20px;
 
-  background: #7A8450;
+  background: #ffffff;
   border: none;
   border-radius: 20px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -783,7 +928,7 @@ body {
 .details2-button-text{
   font-family: var(--font-serif);
   font-size: clamp(14px, 3.2vw, 18px);
-  color: #fff;
+  color: #7A8450;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -825,7 +970,7 @@ body {
   max-height: min(60vh, 420px);
   overflow: auto;
   display: none;
-  background: #7A8450;
+  background: #949f68;
   border-radius: clamp(16px, 2.2vw, 22px);
   padding: clamp(14px, 2.6vw, 20px);
 
@@ -843,7 +988,7 @@ body {
   font-style: italic;
   font-size: clamp(14px, 2.2vw, 16px);
   line-height: 1.55;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   margin: 0 0 clamp(10px, 2vw, 14px) 0;
 }
@@ -857,7 +1002,7 @@ body {
 
   font-family: 'Libre Baskerville', serif;
   font-size: clamp(16px, 2.4vw, 18px);
-  color: #fff;
+  color: #ffffff;
   text-align: center;
 
   text-decoration: underline;
@@ -896,7 +1041,7 @@ body {
   height: auto;
   display: block;
   margin: 0;
-  margin-top: 12px;
+  margin-top: 0;
 }
 
 /* ===== Modal formulario overlay (NO mueve layout) ===== */
@@ -923,7 +1068,7 @@ body {
 .details2-form{
   position: relative;
   width: min(70vw, 280px);
-  background: #7A8450;
+  background: #949f68;
   border-radius: 22px;
   padding: clamp(16px, 4vw, 26px);
   box-shadow: 0 22px 70px rgba(0,0,0,0.35);
@@ -935,7 +1080,7 @@ body {
   margin: 0 0 6px 0;
   font-family: var(--font-serif);
   font-size: clamp(14px, 3.2vw, 18px);
-  color: #fff;
+  color: #ffffff;
 }
 
 .details2-input{
@@ -943,7 +1088,7 @@ body {
   height: 24px;
   border: none;
   border-radius: 8px;
-  background: #fff;
+  background: #ffffff;
   color: #000;
   padding: 0 10px;
   font-family: var(--font-serif);
