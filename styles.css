@@ -1,4 +1,3 @@
-
 /* =========================================================
    RESET
    ========================================================= */
@@ -83,6 +82,9 @@ body {
     padding-bottom: max(0px, env(safe-area-inset-bottom));
   }
 }
+
+
+
 
 /* =========================================================
    SECCIÓN 1: SOBRE (3D ENVELOPE)
@@ -181,8 +183,12 @@ body {
   100% { opacity: 1; }
 }
 
+
+
+
+
 /* =========================================================
-   SECCIÓN 2: CONTENIDO DE BODA (INICIALMENTE OCULTO)
+  CONTENIDO DE BODA (INICIALMENTE OCULTO)
    ========================================================= */
 .content-page2-hidden {
   display: none;
@@ -310,8 +316,12 @@ body {
   border-color: #1d7a2d;
 }
 
+
+
+
+
 /* =========================================================
-   HISTORIA / PALABRAS (SIN DUPLICADOS)
+   SECCION 2 HISTORIA / PALABRAS
    ========================================================= */
 
 .story-section {
@@ -326,7 +336,7 @@ body {
   padding: 16px 0 0;
 
   /* ✅ controla TODAS las separaciones */
-  gap: 35px;
+  gap: 40px;
 
   position: relative;
 }
@@ -503,6 +513,58 @@ body {
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+/* Base (por si quieres ajustar velocidad global) */
+.story-section .animate {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Cuando entran en pantalla */
+.story-section .animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ✅ DELAYS EN CASCADA (orden real de tu HTML) */
+
+/* 1️⃣ Texto bíblico */
+.story-section .story-text.animate.visible {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.2s;
+}
+
+/* 2️⃣ Lettering */
+.story-section .story-lettering.animate.visible {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.5s;
+}
+
+/* 3️⃣ Título countdown */
+.story-section .countdown-title.animate.visible {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.8s;
+}
+
+/* 4️⃣ Subtexto */
+.story-section .countdown-subtext.animate.visible {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 1.1s;
+}
+
+/* 5️⃣ Grid contador */
+.story-section .countdown-grid.animate.visible {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 1.4s;
+}
+
+/* 5️⃣ story-bg */
+.story-section .story-bg.animate.visible {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 1.4s;
+}
+
+
+
 @media (prefers-reduced-motion: reduce) {
   .animate, .animate.visible {
     opacity: 1 !important;
@@ -543,6 +605,10 @@ body {
 /* AJUSTE SOLO PARA PC */
 @media (min-width: 769px) {
 
+  .story-section {
+    gap: 40px; /* 🔥 control real del espacio */
+  }
+
   .story-text {
     margin-top: 8px;
   }
@@ -573,7 +639,226 @@ body {
 
 
 
-/* =ITINERARIO (estructura simple tipo SECCIÓN 4)========================================================
+
+
+
+
+
+
+/* =========================================================
+    SECCIÓN 3: DETALLES
+    ========================================================= */
+
+  .details-section {
+    width: 100%;
+    background: #7A8450;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(10px, 3vh, 20px) 0;
+    gap: 1px; /* 🔥 control global fácil */
+  }
+
+  /* -----------------------------
+    IMÁGENES
+  ----------------------------- */
+
+  .details-img-top {
+    width: clamp(180px, 30vw, 260px);
+    height: auto;
+    opacity: 0.95;
+    margin-top: clamp(25px, 6vw, 60px);
+    margin-bottom: clamp(10px, 2vw, 18px);
+
+  }
+  .details-img {
+    width: clamp(90px, 18vw, 130px);
+    margin-top: clamp(5px, 1.5vw, 10px);
+    margin-bottom: clamp(4px, 1vw, 8px);
+    opacity: 0.9;
+  }
+
+
+  /* =============================
+    IMAGEN DECORATIVA HORIZONTAL
+  ============================= */
+
+  .details-divider {
+    width: clamp(180px, 40vw, 300px); /* 🔥 ocupa todo el ancho */
+    max-width: 400px; /* 🔥 límite en PC (editable) */
+    margin-top: clamp(35px, 7vw, 39px);
+    display: block;
+    margin: clamp(10px, 3vw, 20px) 0;
+    height: auto; /* 🔥 mantiene proporción */
+    opacity: 0.8;
+  }
+
+  /* -----------------------------
+    TEXTOS
+  ----------------------------- */
+
+  .details-title {
+    font-family: var(--font-script),cursive;
+    font-size: clamp(52px, 9vw, 80px);
+    color: #ffffff;
+    margin-top: -6px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-shadow: 0 clamp(2px, 0.5vw, 6px) clamp(6px, 1.5vw, 12px) rgba(0,0,0,0.25);
+    letter-spacing: clamp(0.02em, 0.4vw, 0.08em);
+    margin-bottom: clamp(4px, 1vw, 10px)
+
+  }
+
+  .details-subtitle {
+    font-family: var(--font-script);
+    font-size: clamp(18px, 4vw, 26px);
+    margin-top: clamp(-14px, -2vw, -10px);
+    margin-bottom: clamp(10px, 2vw, 18px);
+    opacity: 0.9;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+  }
+
+  .details-block-title {
+   font-family: 'Great Vibes', cursive;
+   font-size: clamp(28px, 5vw, 38px);
+   letter-spacing: clamp(0.02em, 0.5vw, 0.06em);
+    color: #ffffff;
+    font-weight: normal;
+    margin-top: 0px;
+    margin-bottom: clamp(6px, 1.5vw, 10px);
+  }
+
+  .details-time {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(12px, 2.5vw, 16px);
+    color: #ffffff;
+    margin-top: clamp(2px, 0.8vw, 6px);
+    letter-spacing: clamp(0.04em, 0.5vw, 0.08em);
+    line-height: 1.6;
+
+  }
+
+  .details-text {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(12px, 2.5vw, 16px);
+    color: #ffffff; 
+    letter-spacing: clamp(0.04em, 0.5vw, 0.08em);
+    line-height: 1.6;
+    margin-top: clamp(2px, 0.8vw, 6px);
+
+  }
+
+  /* -----------------------------
+    CAJA DIRECCIÓN
+  ----------------------------- */
+
+  .details-box {
+    min-height: clamp(20px, 3vh, 55px);
+    padding: 0 clamp(12px, 3vw, 18px);
+    height: clamp(26px, 4vw, 32px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.6);
+    height: clamp(24px, 4vw, 34px);
+    background: transparent; /* 🔥 3 tonos más claro aprox */
+    color: white;
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(12px, 2.5vw, 15px);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    margin-top: clamp(6px, 1.5vw, 10px);
+  }
+
+  /* -----------------------------
+    BOTÓN
+  ----------------------------- */
+
+  .details-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(11px, 2.5vw, 14px);
+    height: clamp(28px, 4vw, 34px);
+    padding: 0 clamp(18px, 4vw, 24px);
+    background: transparent;
+    color: #ffffff;
+    font-family: 'Libre Baskerville', serif;
+    text-decoration: none;
+    border: 1px solid white;
+    transition: all 0.3s ease;
+    margin-top: clamp(6px, 1.5vw, 10px);
+    margin-bottom: clamp(20px, 5vw, 35px);
+
+    letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
+    border-radius: 999px;
+    font-style: italic;
+  }
+
+  /* interacción click */
+  .details-button:active {
+    background: white;
+    color: #7A8450;
+  }
+
+  /* -----------------------------
+    RESPONSIVE EXTRA (MÓVIL)
+  ----------------------------- */
+
+  @media (max-width: 768px) {
+    .details-section {
+      gap: 1px;
+    }
+    .details-divider {
+    max-width: 260px; /* 🔥 límite en PC (editable) */
+    
+  }
+  }
+/* -----------------------------
+    CASCADA DE ANIMACIONES (AJUSTA LOS DELAYS AQUÍ)
+  ----------------------------- */
+
+
+.details-section .animate {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.details-section .animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* ✅ ORDEN REAL CONTROLADO */
+.d1.visible { transition-delay: 1.4s; }
+.d2.visible { transition-delay: 1.7s; }
+.d3.visible { transition-delay: 2s; }
+.d4.visible { transition-delay: 2.3s; }
+
+.d5.visible { transition-delay: 2.6s; }
+.d6.visible { transition-delay: 2.9s; }
+.d7.visible { transition-delay: 3.2s; }
+.d8.visible { transition-delay: 3.5s; }
+.d9.visible { transition-delay: 3.8s; }
+
+.d10.visible { transition-delay: 4.1s; }
+.d11.visible { transition-delay: 4.4s; }
+.d12.visible { transition-delay: 4.7s; }
+.d13.visible { transition-delay: 5s; }
+.d14.visible { transition-delay: 5.3s; }
+
+
+
+
+
+
+
+
+/* SECCION 4 =  ITINERARIO ========================================================
  / centro / derecha) */   
 .it2-row{
   display: grid;
@@ -599,7 +884,7 @@ body {
   left: 50%;
   width: var(--it2-line);
   transform: translateX(-50%);
-  background: rgba(255,255,255,0.80);
+  background: #7A8450;
   border-radius: 2px;
 }
 
@@ -648,7 +933,7 @@ body {
 .it2-text{
   font-family: var(--font-serif);
   font-size: var(--it2-text);
-  color: #fff;
+  color: #7A8450;
   margin: 0;
   line-height: 1;
 }
@@ -672,8 +957,8 @@ body {
 
 .it2-section{
   width: 100%;
-  background: #7A8450; /* ✅ fondo oliva */
-  color: #fff;
+  background: #ffffff; /* ✅ fondo oliva */
+  color: #7A8450;
 
   display: flex;
   flex-direction: column;
@@ -701,7 +986,7 @@ body {
   font-family: var(--font-script);
   font-size: clamp(50px, 10vw, 80px);
   font-weight: 400;
-  color: #fff;
+  color: #7A8450;
   margin-bottom: clamp(20px,6vw,30px);
   text-align: center;
 }
@@ -719,148 +1004,6 @@ body {
 
 
 
-/* =========================================================
-    SECCIÓN 3: DETALLES
-    ========================================================= */
-
-  .details-section {
-    width: 100%;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: clamp(10px, 3vh, 20px) 0;
-    gap: 5px; /* 🔥 control global fácil */
-    padding-bottom: 0;
-  }
-
-  /* -----------------------------
-    IMÁGENES
-  ----------------------------- */
-
-  .details-img-top {
-    width: clamp(140px, 24vw, 200px);
-    height: auto;
-    margin-top: clamp(35px, 8vw, 60px);
-  }
-  .details-img {
-    width: clamp(90px, 20vw, 120px);
-    margin-top: clamp(1px, 1vw, 10px);
-  }
-
-
-  /* =============================
-    IMAGEN DECORATIVA HORIZONTAL
-  ============================= */
-
-  .details-divider {
-    width: clamp(200px, 50vw, 340px); /* 🔥 ocupa todo el ancho */
-    max-width: 400px; /* 🔥 límite en PC (editable) */
-    margin-top: clamp(35px, 7vw, 39px);
-    display: block;
-    margin: 0auto;
-    height: auto; /* 🔥 mantiene proporción */
-  }
-
-  /* -----------------------------
-    TEXTOS
-  ----------------------------- */
-
-  .details-title {
-    font-family: var(--font-script),cursive;
-    font-size: clamp(62px, 15vw, 90px);
-    color: #7A8450;
-    margin-top: -6px;
-    font-weight: normal;
-  }
-
-  .details-subtitle {
-    font-family: var(--font-script);
-    font-size: clamp(20px, 6vw, 30px);
-    margin-top: -18px;
-    color: #838380;
-    margin-bottom: clamp(12px, 1.5vw, 14px);
-  }
-
-  .details-block-title {
-   font-family: 'Great Vibes', cursive;
-    font-size: clamp(32px, 6vw, 45px);
-    color: #7A8450;
-    font-weight: normal;
-  }
-
-  .details-time {
-    font-family: 'Libre Baskerville', serif;
-    font-size: clamp(10px, 2.5vw, 18px);
-    color: #838380;
-  }
-
-  .details-text {
-    font-family: 'Libre Baskerville', serif;
-    font-size: clamp(10px, 2.5vw, 18px);
-    color: #838380;
-  }
-
-  /* -----------------------------
-    CAJA DIRECCIÓN
-  ----------------------------- */
-
-  .details-box {
-    min-height: clamp(20px, 3vh, 55px);
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-    border-radius: 10px;
-    height: clamp(24px, 4vw, 34px);
-    background: #9aa37a; /* 🔥 3 tonos más claro aprox */
-    color: white;
-    font-family: 'Libre Baskerville', serif;
-    font-size: clamp(10px, 2.5vw, 18px);
-    font-weight: bold;
-  }
-
-  /* -----------------------------
-    BOTÓN
-  ----------------------------- */
-
-  .details-button{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(8px, 2vw, 14px);
-    height: clamp(28px, 4vw, 34px);
-    padding: 0 20px;
-    background: white;
-    color: #7A8450;
-    font-family: 'Libre Baskerville', serif;
-    text-decoration: underline;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    margin-bottom: 5px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  }
-
-  /* interacción click */
-  .details-button:active {
-    background: #7A8450;
-    color: white;
-  }
-
-  /* -----------------------------
-    RESPONSIVE EXTRA (MÓVIL)
-  ----------------------------- */
-
-  @media (max-width: 768px) {
-    .details-section {
-      gap: 5px;
-    }
-    .details-divider {
-    max-width: 260px; /* 🔥 límite en PC (editable) */
-    
-  }
-  }
 
   /* =====SECCIÓN 4: DETALLES2 ===================================================/* ================================================= */
 
@@ -872,7 +1015,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  padding: clamp(15px, 5vh, 30px) 0 60px;
+  padding: clamp(12px, 4vh, 25px) 0 clamp(30px, 8vh, 60px);
 }
 
 /* Tamaños y tipografías */
@@ -893,7 +1036,7 @@ body {
 
 .details2-text{
   font-family: var(--font-serif);
-  font-size: clamp(10px, 2vw, 18px);
+  font-size: clamp(9px, 2vw, 18px);
   color: #ffffff;
   margin-bottom: clamp(8px, 1.5vw, 12px);
   text-align: center;
@@ -908,9 +1051,10 @@ body {
   height: clamp(28px, 4vw, 34px);
   padding: 0 20px;
 
-  background: #ffffff;
+  background: #b3c084d3;
   border: none;
   border-radius: 20px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -928,7 +1072,7 @@ body {
 .details2-button-text{
   font-family: var(--font-serif);
   font-size: clamp(14px, 3.2vw, 18px);
-  color: #7A8450;
+  color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -970,7 +1114,7 @@ body {
   max-height: min(60vh, 420px);
   overflow: auto;
   display: none;
-  background: #949f68;
+  background: #7A8450;
   border-radius: clamp(16px, 2.2vw, 22px);
   padding: clamp(14px, 2.6vw, 20px);
 
@@ -988,7 +1132,7 @@ body {
   font-style: italic;
   font-size: clamp(14px, 2.2vw, 16px);
   line-height: 1.55;
-  color: #ffffff;
+  color: #fff;
   text-align: center;
   margin: 0 0 clamp(10px, 2vw, 14px) 0;
 }
@@ -1002,7 +1146,7 @@ body {
 
   font-family: 'Libre Baskerville', serif;
   font-size: clamp(16px, 2.4vw, 18px);
-  color: #ffffff;
+  color: #fff;
   text-align: center;
 
   text-decoration: underline;
@@ -1041,7 +1185,7 @@ body {
   height: auto;
   display: block;
   margin: 0;
-  margin-top: 0;
+  margin-top: 12px;
 }
 
 /* ===== Modal formulario overlay (NO mueve layout) ===== */
@@ -1068,7 +1212,7 @@ body {
 .details2-form{
   position: relative;
   width: min(70vw, 280px);
-  background: #949f68;
+  background: #7A8450;
   border-radius: 22px;
   padding: clamp(16px, 4vw, 26px);
   box-shadow: 0 22px 70px rgba(0,0,0,0.35);
@@ -1080,7 +1224,7 @@ body {
   margin: 0 0 6px 0;
   font-family: var(--font-serif);
   font-size: clamp(14px, 3.2vw, 18px);
-  color: #ffffff;
+  color: #fff;
 }
 
 .details2-input{
@@ -1088,7 +1232,7 @@ body {
   height: 24px;
   border: none;
   border-radius: 8px;
-  background: #ffffff;
+  background: #fff;
   color: #000;
   padding: 0 10px;
   font-family: var(--font-serif);

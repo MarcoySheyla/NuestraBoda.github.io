@@ -35,6 +35,12 @@
     <div class="flash" id="flash"></div>
   </div>
 
+
+
+
+
+
+
   <!-- ========================================
        SECCIÓN 2: CONTENIDO DE BODA (Aparece después del sobre)
        ======================================== -->
@@ -77,7 +83,12 @@
 
     </header>
 
-    <!-- SECCIÓN 3 PALABRAS -->
+    
+    
+    
+    
+    <!-- SECCIÓN 2 HISTORIA / PALABRAS (SIN DUPLICADOS) -->
+   
     <section class="story-section animate">
 
       <div class="story-text" tabindex="0" role="button" aria-pressed="false">
@@ -88,20 +99,21 @@
         </p>
       </div>
 
-      <div class="story-lettering">
+      <div class="story-lettering animate">
         <img src="img/Lettering.png" alt="Lettering" loading="lazy">
       </div>
 
       <!-- CONTADOR INCORPORADO EN HISTORIA -->
+
       <div class="story-countdown">
-        <h2 class="countdown-title">Cuenta Atras</h2>
+        <h2 class="countdown-title animate">Cuenta Atras</h2>
         
-        <p class="countdown-subtext">
+        <p class="countdown-subtext animate">
            Prepárate para el día más especial de nuestras vidas.
             </p>
 
 
-        <div class="countdown-grid">
+        <div class="countdown-grid animate">
           <div class="countdown-item">
             <span id="days" class="countdown-number">000</span>
             <span class="countdown-label">Días</span>
@@ -124,7 +136,7 @@
         </div>
       </div>
 
-      <picture class="story-bg" aria-hidden="true">
+      <picture class="story-bg" aria-hidden animate="true">
         <source srcset="img/uno-desktop.png" media="(min-width: 769px)">
         <source srcset="img/uno-mobile.png" media="(max-width: 768px)">
         <img src="img/uno-desktop.png" alt="Flores" loading="lazy">
@@ -133,8 +145,77 @@
     </section>
 
 
+
+
+
+
+    
 <!-- =========================================================
-     SECCIÓN NUEVA: ITINERARIO (entre PALABRAS y DETALLES)
+   SECCIÓN 3: DETALLES
+========================================================= -->
+<section class="details-section">
+
+  <!-- 2.1 Imagen -->
+  <img src="img/Seccion3uno.png" alt="detalle" class="details-img-top animate d1">
+
+  <!-- 2.2 Título -->
+  <h2 class="details-title animate d2">Los detalles</h2>
+
+  <!-- 2.3 Subtítulo -->
+  <p class="details-subtitle animate d3">Todo lo que tienes que saber</p>
+
+  <!-- 2.X Imagen decorativa horizontal -->
+  <img src="img/Seccion3dosmedio.png" alt="decoracion" class="details-divider animate d4">
+
+  <!-- 2.4 Imagen -->
+  <img src="img/Seccion3dos.png" alt="ceremonia" class="details-img animate d5">
+
+  <!-- 2.5 Título sección -->
+  <h3 class="details-block-title animate d6">Ceremonia Religiosa</h3>
+
+  <!-- 2.6 Hora -->
+  <p class="details-time animate d7">12:00 AM</p>
+
+  <!-- 2.7 Caja dirección -->
+  <div class="details-box animate d8">
+    Dirección
+  </div>
+
+  <!-- 2.8 Botón -->
+  <a href="https://maps.app.goo.gl/ru6bivnLvoSAwZSQ6" target="_blank" class="details-button animate d9">
+    Ver ubicación
+  </a>
+
+  <!-- 2.9 Imagen -->
+  <img src="img/Seccion3tres.png" alt="recepción" class="details-img animate d10">
+
+  <!-- 2.10 Título -->
+  <h3 class="details-block-title animate d11">Recepción</h3>
+
+  <!-- 2.11 Texto -->
+  <p class="details-text animate d12">Después de la ceremonia celebraremos en</p>
+
+  <!-- 2.12 Caja -->
+  <div class="details-box animate d13">
+    Dirección
+  </div>
+
+  <!-- Botón -->
+  <a href="https://maps.app.goo.gl/ru6bivnLvoSAwZSQ6" target="_blank" class="details-button animate d14">
+    Ver ubicación
+  </a>
+
+</section>
+
+
+
+
+
+
+
+
+<!-- =========================================================
+     SECCIÓN 4: ITINERARIO (entre PALABRAS y DETALLES)
 ========================================================= -->
 <section class="it2-section animate" id="itinerario">
 
@@ -225,69 +306,15 @@
     
 
 
-    
-<!-- =========================================================
-   SECCIÓN 3: DETALLES
-========================================================= -->
-<section class="details-section">
 
-  <!-- 2.1 Imagen -->
-  <img src="img/Seccion3uno.png" alt="detalle" class="details-img-top">
 
-  <!-- 2.2 Título -->
-  <h2 class="details-title">Los detalles</h2>
 
-  <!-- 2.3 Subtítulo -->
-  <p class="details-subtitle">Todo lo que tienes que saber</p>
 
-  <!-- 2.X Imagen decorativa horizontal -->
-  <img src="img/Seccion3dosmedio.png" alt="decoracion" class="details-divider">
 
-  <!-- 2.4 Imagen -->
-  <img src="img/Seccion3dos.png" alt="ceremonia" class="details-img">
 
-  <!-- 2.5 Título sección -->
-  <h3 class="details-block-title">Ceremonia Religiosa</h3>
-
-  <!-- 2.6 Hora -->
-  <p class="details-time">12:00 AM</p>
-
-  <!-- 2.7 Caja dirección -->
-  <div class="details-box">
-    Dirección
-  </div>
-
-  <!-- 2.8 Botón -->
-  <a href="https://maps.app.goo.gl/ru6bivnLvoSAwZSQ6" target="_blank" class="details-button">
-    Ver ubicación
-  </a>
-
-  <!-- 2.9 Imagen -->
-  <img src="img/Seccion3tres.png" alt="recepción" class="details-img">
-
-  <!-- 2.10 Título -->
-  <h3 class="details-block-title">Recepción</h3>
-
-  <!-- 2.11 Texto -->
-  <p class="details-text">Después de la ceremonia celebraremos en</p>
-
-  <!-- 2.12 Caja -->
-  <div class="details-box">
-    Dirección
-  </div>
-
-  <!-- Botón -->
-  <a href="https://maps.app.goo.gl/ru6bivnLvoSAwZSQ6" target="_blank" class="details-button">
-    Ver ubicación
-  </a>
-
-<!-- 2.13 (final) Imagen fin: ocupa todo el ancho y sin margen inferior -->
-  <img src="img/seccion4fin.png" alt="Fin sección" class="details2-footer-img">
-
-</section>
 
 <!-- =========================================================
-     SECCIÓN 4: DETALLES2
+     SECCIÓN 5: DETALLES2
      Base estructural: igual que .details-section (columna centrada)
 ========================================================= -->
 <section class="details2-section" id="details2">
@@ -385,9 +412,9 @@
   <!-- separación 5px (editable si quieres menos/0) -->
   <div class="d2-mt-5"></div>
 
-  <!-- 2.9 (final) Imagen fin: ocupa todo el ancho y sin margen inferior 
-  <img src="img/seccion4fin.png" alt="Fin sección" class="details2-footer-img">
--->
+  <!-- 2.9 (final) Imagen fin: ocupa todo el ancho y sin margen inferior
+  <img src="img/seccion4fin.png" alt="Fin sección" class="details2-footer-img"> -->
+
 </section>
 
 <!-- =========================================================
