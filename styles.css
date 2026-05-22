@@ -336,7 +336,7 @@ body {
   padding: 16px 0 0;
 
   /* ✅ controla TODAS las separaciones */
-  gap: 40px;
+  gap: 35px;
 
   position: relative;
 }
@@ -363,6 +363,7 @@ body {
 .story-bg img {
   width: 100%;
   display: block;
+  
 }
 
 
@@ -646,7 +647,7 @@ body {
 
 
 /* =========================================================
-    SECCIÓN 3: DETALLES
+    SECCION 3: DETALLES
     ========================================================= */
 
   .details-section {
@@ -699,7 +700,7 @@ body {
 
   .details-title {
     font-family: var(--font-script),cursive;
-    font-size: clamp(52px, 9vw, 80px);
+    font-size: clamp(60px, 15vw, 90px);
     color: #ffffff;
     margin-top: -6px;
     font-weight: normal;
@@ -713,7 +714,7 @@ body {
   .details-subtitle {
     font-family: var(--font-script);
     font-size: clamp(18px, 4vw, 26px);
-    margin-top: clamp(-14px, -2vw, -10px);
+    margin-top: clamp(-16px, -3vw, -15px);
     margin-bottom: clamp(10px, 2vw, 18px);
     opacity: 0.9;
     color: #ffffff;
@@ -722,7 +723,7 @@ body {
 
   .details-block-title {
    font-family: 'Great Vibes', cursive;
-   font-size: clamp(28px, 5vw, 38px);
+   font-size: clamp(32px, 6vw, 40px);
    letter-spacing: clamp(0.02em, 0.5vw, 0.06em);
     color: #ffffff;
     font-weight: normal;
@@ -742,7 +743,7 @@ body {
 
   .details-text {
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(12px, 2.5vw, 16px);
+    font-size: clamp(10px, 3vw, 17px);
     color: #ffffff; 
     letter-spacing: clamp(0.04em, 0.5vw, 0.08em);
     line-height: 1.6;
@@ -756,18 +757,18 @@ body {
 
   .details-box {
     min-height: clamp(20px, 3vh, 55px);
-    padding: 0 clamp(12px, 3vw, 18px);
-    height: clamp(26px, 4vw, 32px);
+    padding: 0 clamp(16px, 4vw, 18px);
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.6);
-    height: clamp(24px, 4vw, 34px);
+    border: 1.5px solid rgba(255,255,255,0.6);
+    height: 28px;
     background: transparent; /* 🔥 3 tonos más claro aprox */
     color: white;
     font-family: 'Libre Baskerville', serif;
-    font-size: clamp(12px, 2.5vw, 15px);
+    font-size: clamp(8px, 2.5vw, 12px);
     font-weight: 400;
     letter-spacing: 0.04em;
     margin-top: clamp(6px, 1.5vw, 10px);
@@ -784,11 +785,11 @@ body {
     font-size: clamp(11px, 2.5vw, 14px);
     height: clamp(28px, 4vw, 34px);
     padding: 0 clamp(18px, 4vw, 24px);
-    background: transparent;
-    color: #ffffff;
+    background: #fffffff2;
+    color: #7A8450;
     font-family: 'Libre Baskerville', serif;
     text-decoration: none;
-    border: 1px solid white;
+    border: 1.5px solid white;
     transition: all 0.3s ease;
     margin-top: clamp(6px, 1.5vw, 10px);
     margin-bottom: clamp(20px, 5vw, 35px);
@@ -1005,7 +1006,7 @@ body {
 
 
 
-  /* =====SECCIÓN 4: DETALLES2 ===================================================/* ================================================= */
+  /* =====SECCION 5: DETALLES2 ===================================================/* ================================================= */
 
 .details2-section{
   width: 100%;
@@ -1049,19 +1050,20 @@ body {
 /* Botones (igual filosofía que tu details-button pero invertido) */
 .details2-button{
   height: clamp(28px, 4vw, 34px);
-  padding: 0 20px;
-
-  background: #b3c084d3;
-  border: none;
-  border-radius: 20px;
-
+  padding: 0 clamp(18px, 4vw, 24px);
+  transition: all 0.3s ease;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 999px;
+  color: #ffffff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
+  margin-top: clamp(6px, 1.5vw, 10px);
+  margin-bottom: clamp(20px, 5vw, 35px);
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
-
+  letter-spacing: clamp(0.05em, 0.6vw, 0.1em);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -1071,7 +1073,7 @@ body {
 
 .details2-button-text{
   font-family: var(--font-serif);
-  font-size: clamp(14px, 3.2vw, 18px);
+  font-size: clamp(12px, 3vw, 18px);
   color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -1104,79 +1106,155 @@ body {
    Reemplaza al video uno.mp4
    ========================================================= */
 
+
+/* 1) Panel principal (blanco con tinte oliva, NO crema amarilla) */
 .gift-pop{
   position: absolute;
   left: 50%;
-  bottom: calc(100% + 12px);
+  bottom: calc(100% + 14px);
   transform: translateX(-50%);
   z-index: 80;
-  width: min(70vw, 280px);
-  max-height: min(60vh, 420px);
-  overflow: auto;
+
+  width: min(70vw, 340px);
   display: none;
-  background: #7A8450;
-  border-radius: clamp(16px, 2.2vw, 22px);
-  padding: clamp(14px, 2.6vw, 20px);
 
-  box-shadow: 0 18px 45px rgba(0,0,0,0.25);
-  border: 1px solid rgba(255,255,255,0.18);
+  /* Fondo: blanco limpio con leve tinte verdoso (armoniza con #7A8450) */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.96) 0%,
+    rgba(227,232,214,0.92) 100%
+  );
+
+  border-radius: 18px;
+  padding: clamp(10px, 2.5vw, 14px);
+  /* Borde fino oliva + sombra elegante */
+  border: 1px solid rgba(122,132,80,0.28);
+  box-shadow:
+    0 14px 34px rgba(0,0,0,0.18);
+
+  /* micro detalle: “tarjeta” */
+  overflow: hidden;
 }
 
-.gift-pop.is-open{
-  display: block;
+
+.gift-pop::after{
+  content:"";
+  position:absolute;
+  inset: 8px;
+  border-radius: 14px;
+  border: 1px solid rgba(122,132,80,0.18);
+  pointer-events: none;
 }
 
-/* Texto principal (16px, cursiva, centrado) */
-.gift-intro{
-  font-family: 'Libre Baskerville', serif;
-  font-style: italic;
-  font-size: clamp(14px, 2.2vw, 16px);
-  line-height: 1.55;
-  color: #fff;
+
+/* Mostrar popup */
+.gift-pop.is-open{ display: block; }
+
+/* 2) Título/intro si lo tienes en HTML (si no existe, no pasa nada) */
+.gift-head{
   text-align: center;
-  margin: 0 0 clamp(10px, 2vw, 14px) 0;
+  display: grid;
+  gap: 6px;
+  margin-bottom: 10px;
 }
 
-/* Botones tipo link subrayado (18px) */
+.gift-title{
+  font-family: var(--font-script);
+  font-size: clamp(26px, 4.6vw, 34px);
+  line-height: 1;
+  color: #7A8450;
+}
+
+.gift-sub{
+  font-family: var(--font-serif);
+  font-size: clamp(11px, 2.7vw, 13px);
+  line-height: 1.45;
+  color: rgba(43,43,43,0.70);
+  width: min(92%, 280px);
+  margin: 0 auto;
+}
+
+/* Línea decorativa sutil (no dorada fuerte, no crema) */
+.gift-divider{
+  height: 1px;
+  width: 76%;
+  margin: 10px auto 12px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(122,132,80,0.35),
+    transparent
+  );
+}
+
+/* 3) Botones internos (píldoras finas, estilo invitación) */
 .gift-toggle{
   width: 100%;
-  background: transparent;
-  border: none;
-  padding: clamp(8px, 1.6vw, 10px) 6px;
+  border-radius: 999px;
 
-  font-family: 'Libre Baskerville', serif;
-  font-size: clamp(16px, 2.4vw, 18px);
-  color: #fff;
-  text-align: center;
+  /* Fino y elegante */
+  border: 1px solid rgba(122,132,80,0.22);
+  background: rgba(255,255,255,0.72);
 
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  padding: 8px 14px;
+  margin: 4px 0;
 
+  font-family: var(--font-serif);
+  font-size: clamp(11px, 2.9vw, 13px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: rgba(122,132,80,0.95);
   cursor: pointer;
+
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .gift-toggle:active{
-  opacity: 0.85;
+  transform: translateY(1px);
+  background: rgba(255,255,255,0.92);
+  border-color: rgba(122,132,80,0.35);
 }
 
-/* Texto revelado debajo */
+/* 4) Dato revelado (tarjetita interior, más “fina” y coherente) */
 .gift-reveal{
-  font-family: 'Libre Baskerville', serif;
-  font-size: clamp(16px, 2.4vw, 18px);
-  color: #fff;
-  text-align: center;
+  margin: 8px 0 10px;
+  padding: 10px 12px;
 
-  margin: clamp(6px, 1.2vw, 8px) 0 clamp(8px, 1.6vw, 10px) 0;
+  border-radius: 14px;
+
+  /* Muy suave, sin romper la paleta */
+  background: rgba(122,132,80,0.08);
+  border: 1px solid rgba(122,132,80,0.18);
+
+  font-family: var(--font-serif);
+  font-size: clamp(12px, 3.1vw, 14px);
+  letter-spacing: 0.06em;
+
+  color: rgba(43,43,43,0.82);
+  text-align: center;
 }
 
-/* En móviles muy pequeños, si no cabe arriba, lo mostramos debajo del botón */
+/* 5) Móviles muy pequeños: si no cabe arriba, baja debajo */
 @media (max-width: 480px){
   .gift-pop{
-    bottom: auto;
-    top: calc(100% + 12px);
+    gift-pop{
+    width: 240px;        /* ✅ tamaño REAL móvil */
+    padding: 10px 12px;  /* más compacto */
+  }
+
   }
 }
+
+
+/* estado al tocar */
+.gift-toggle:active{
+  transform: translateY(1px);
+  background: rgba(255,255,255,0.90);
+  border-color: rgba(122,132,80,0.55);
+}
+
 
 
 /* ===== Imagen final: full ancho, sin margen inferior ===== */
@@ -1209,31 +1287,73 @@ body {
   background: rgba(0,0,0,0.35);
 }
 
+
 .details2-form{
   position: relative;
-  width: min(70vw, 280px);
-  background: #7A8450;
-  border-radius: 22px;
-  padding: clamp(16px, 4vw, 26px);
-  box-shadow: 0 22px 70px rgba(0,0,0,0.35);
+  width: min(84vw, 340px);
+
+  /* ✅ MISMO FONDO QUE gift-pop */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.96) 0%,
+    rgba(227,232,214,0.92) 100%
+  );
+
+  border-radius: 18px;
+
+  padding: clamp(14px, 3.2vw, 18px);
+
+  /* ✅ MISMO BORDE */
+  border: 1px solid rgba(122,132,80,0.28);
+
+  /* ✅ MISMA SOMBRA */
+  box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+
   z-index: 1;
 }
+
+
+.details2-form::after{
+  content: "";
+  position: absolute;
+
+  inset: 8px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(122,132,80,0.18);
+
+  pointer-events: none;
+}
+
+
+
+@media (max-width: 480px){
+  .details2-form{
+    width: 300px;
+    padding: 12px 12px;
+  }
+
+  .details2-form::after{
+    inset: 4px;
+  }
+}
+
 
 .details2-label{
   display: block;
   margin: 0 0 6px 0;
   font-family: var(--font-serif);
   font-size: clamp(14px, 3.2vw, 18px);
-  color: #fff;
+  color: #6d7747;
 }
 
 .details2-input{
   width: 100%;
   height: 24px;
-  border: none;
+  border: 1px solid rgba(122,132,80,0.2);
   border-radius: 8px;
-  background: #fff;
-  color: #000;
+  background: rgba(255,255,255,0.85);
+  color: #2b2b2b;
   padding: 0 10px;
   font-family: var(--font-serif);
   font-size: clamp(14px, 3.2vw, 18px);
@@ -1254,14 +1374,14 @@ body {
 .details2-pases{
   font-family: var(--font-script);
   font-size: clamp(13px, 3vw, 18px);
-  color: #fff;
+  color: #6d7747;
 }
 
 .details2-reservado{
   font-family: var(--font-script);
   font-size: clamp(13px, 3vw, 18px);
   margin-top: 2px;
-  color: #fff;
+  color: #6d7747;
 }
 
 .details2-pill{
@@ -1271,8 +1391,8 @@ body {
   height: 20px;
   padding: 0 12px;
   border-radius: 999px;
-  background: #9ea77b;
-  color: #ffffff;
+  background: rgba(122,132,80,0.15);
+  color: #6d7747;
   font-family: var(--font-serif);
   font-size: clamp(12px, 3.2vw, 18px);
 }
@@ -1348,7 +1468,7 @@ body {
 .details2-submit-text{
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: clamp(14px, 3.2vw, 18px);
+  font-size: clamp(10px, 3vw, 16px);
   color: #7A8450;
 }
 
