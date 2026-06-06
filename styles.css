@@ -303,11 +303,11 @@ body {
 
 /* Flecha */
 .arrow {
-  width: clamp(14px, 3vw, 22px);   /* ✅ tamaño adaptable */
-  height: clamp(14px, 3vw, 22px);
+  width: clamp(18px, 8vw, 22px);   /* ✅ tamaño adaptable */
+  height: clamp(18px, 8vw, 22px);
 
-  border-left: clamp(4px, 0.6vw, 5px) solid white;
-  border-bottom: clamp(4px, 0.6vw, 5px) solid white;
+  border-left: clamp(5px, 0.8vw, 6px) solid white;
+  border-bottom: clamp(4px, 0.8vw, 6px) solid white;
 
   transform: rotate(-45deg);
   opacity: 0.9;
@@ -371,7 +371,18 @@ body {
 }
 
 
+/* =========================================================
+   BOTÓN AUDIO - AJUSTE MÓVIL
+========================================================= */
 
+@media (max-width: 768px) {
+  .audio-toggle {
+    padding: 0.3rem 0.5rem;   /* ✅ más pequeño */
+    font-size: 0.8rem;         /* ✅ texto más compacto */
+    bottom: 12px;              /* ✅ más pegado abajo */
+    right: 12px;               /* ✅ mejor posición */
+  }
+}
 
 
 /* =========================================================
@@ -381,17 +392,13 @@ body {
 .story-section {
   width: 100%;
   background: #ffffff;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   /* ✅ espacio REAL */
   padding: 16px 0 0;
-
   /* ✅ controla TODAS las separaciones */
   gap: 35px;
-
   position: relative;
 }
 
@@ -417,12 +424,9 @@ body {
 .story-bg img {
   width: 100%;
   display: block;
-  
 }
 
-
 .story-lettering {
- 
   width: clamp(200px, 50vw, 340px);
   max-width: 480px;
   z-index: 2;
@@ -832,10 +836,10 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    border: 1.5px solid rgba(255,255,255,0.6);
+    border: 1.8px solid rgba(255,255,255,0.6);
     height: 28px;
     background: transparent; /* 🔥 3 tonos más claro aprox */
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.822);
     font-family: 'Libre Baskerville', serif;
     font-size: clamp(8px, 2.5vw, 12px);
     font-weight: 400;

@@ -57,7 +57,7 @@ if (scrollIndicator) {
     const updateAudioButton = () => {
       if (!music || !audioToggle) return;
       const isPlaying = !music.paused;
-      audioToggle.textContent = isPlaying ? "⏸ Pausar música" : "▶ Reproducir música";
+      audioToggle.textContent = isPlaying ? "⏸ Pausar música" : "▶ Reprod. música";
       audioToggle.setAttribute("aria-pressed", isPlaying ? "true" : "false");
       audioToggle.classList.toggle("playing", isPlaying);
     };
