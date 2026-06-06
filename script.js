@@ -25,6 +25,19 @@
     window.visualViewport.addEventListener("resize", onResize, { passive: true });
   }
 
+
+const scrollIndicator = document.querySelector(".scroll-indicator");
+
+if (scrollIndicator) {
+  scrollIndicator.addEventListener("click", () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth"
+    });
+  });
+}
+
+
   // ---------- Helpers ----------
   const byId = (id) => document.getElementById(id);
 
