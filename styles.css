@@ -1741,3 +1741,10 @@ body {
   position: relative;
   z-index: 2;
 }
+
+
+.it2-icon {
+  filter: brightness(0.85) contrast(1.1);
+}
+
+
