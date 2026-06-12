@@ -123,23 +123,60 @@ if (scrollIndicator) {
     };
 
     // ===== ANIMACIONES (IntersectionObserver) =====
-    const setupAnimations = () => {
-      const els = document.querySelectorAll(".animate");
-      if (!els.length) return;
+    // NOTA: Las flores se manejan por separado abajo
+const setupAnimations = () => {
+  const els = document.querySelectorAll(".animate");
 
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            obs.unobserve(entry.target);
+  if (!els.length) return;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.35,
+    rootMargin: "0px 0px -10% 0px"
+  });
+
+  els.forEach((el) => observer.observe(el));
+};
+
+setupAnimations();
+
+    // ===== FLORES (Sistema de animación por scroll) =====
+    const setupFlowerAnimations = () => {
+      const flowers = document.querySelectorAll(".details-flower");
+      if (!flowers.length) return;
+
+      // Rastrear si la animación ya se inició
+      const animated = new Set();
+
+      const checkFlowersInView = () => {
+        flowers.forEach((flower) => {
+          if (animated.has(flower)) return;
+
+          const rect = flower.getBoundingClientRect();
+          const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+          if (isInView && !flower.classList.contains("visible")) {
+            flower.classList.add("visible");
+            animated.add(flower);
           }
         });
-      }, { threshold: 0.1, rootMargin: "50px" });
+      };
 
-      els.forEach((el) => observer.observe(el));
+      // Ejecutar inmediatamente
+      checkFlowersInView();
+
+      // Y también al hacer scroll
+      window.addEventListener("scroll", checkFlowersInView, { passive: true });
     };
 
-    setupAnimations(); // puede ejecutarse ya
+    // Ejecutar cuando DOM esté completo
+    setTimeout(() => setupFlowerAnimations(), 200);
 
     // ===== CONFETI (BOTÓN APORTACIÓN) =====
     const confettiCanvas = byId("confetti-canvas");
@@ -446,7 +483,6 @@ if (toggleIbam && ibamData) {
 
 /* =========================================================
    ITINERARIO: activar animación al entrar en pantalla
-   (compatible con tu .animate / .visible)
 ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
   const it2Els = document.querySelectorAll(".it2-section, .it2-row");
