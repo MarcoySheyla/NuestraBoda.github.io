@@ -908,19 +908,17 @@ body {
 
 .d5.visible { transition-delay: 2.6s; }
 .d6.visible { transition-delay: 2.9s; }
+.d6b.visible { transition-delay: 3.05s; }
 .d7.visible { transition-delay: 3.2s; }
 .d8.visible { transition-delay: 3.5s; }
 .d9.visible { transition-delay: 3.8s; }
 
 .d10.visible { transition-delay: 4.1s; }
 .d11.visible { transition-delay: 4.4s; }
+.d11b.visible { transition-delay: 4.55s; }
 .d12.visible { transition-delay: 4.7s; }
 .d13.visible { transition-delay: 5s; }
 .d14.visible { transition-delay: 5.3s; }
-
-
-
-
 
 
 
