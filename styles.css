@@ -420,7 +420,7 @@ body {
 .story-decor-right {
   position: absolute;
   bottom: -10px;   /* 🔥 sube/baja la imagen */
-  right: 30px;
+  right: 0px;
   width: clamp(65px, 24vw, 200px);
   height: auto;
   transform: translate(30%, 20%); /* 🔥 la saca un poco hacia fuera */
