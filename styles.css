@@ -401,12 +401,9 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-
   width: clamp(65px, 24vw, 200px);
   height: auto;
-
   z-index: 3;
-
   transform: translate(30%, -20%);
   pointer-events: none;
 }
@@ -418,6 +415,17 @@ body {
   gap: 12px;
   margin: 0;
   margin-bottom: clamp(35px, 18vw, 50px);
+}
+
+.story-decor-right {
+  position: absolute;
+  bottom: -10px;   /* 🔥 sube/baja la imagen */
+  right: 30px;
+  width: clamp(65px, 24vw, 200px);
+  height: auto;
+  transform: translate(30%, 20%); /* 🔥 la saca un poco hacia fuera */
+  pointer-events: none;
+  z-index: 3;
 }
 
 /* Fondo responsive (picture) */
@@ -441,7 +449,7 @@ body {
   margin-bottom: clamp(35px, 5vw, 60px);
    right: 0;
    align-self: flex-start;
-   margin-top: 15px;
+   margin-top: -5px;
 }
 
 .story-lettering img {
@@ -456,7 +464,7 @@ body {
   position: relative;
   z-index: 2;
   width: min(85vw, 540px);
-  margin-top: clamp(85px, 38vw, 150px);
+  margin-top: clamp(75px, 45vw, 100px);
   text-align: center;
   padding: clamp(10px, 2vw, 18px);
 }
@@ -480,8 +488,7 @@ body {
   font-weight: 200;
   font-size: clamp(30px, 10vw, 60px);
   color:#2b2b2b95;
-  z-index: 2;
-  margin-bottom:-20px;
+  z-index: 2; 
 }
 
 .countdown-subtext{
@@ -507,6 +514,7 @@ body {
   z-index: 2;
   max-width: 550px;
   margin-TOP: CLAMP(20px, 4vw, 30px);
+  margin-bottom: clamp(60px, 20vw, 90px);
 }
 
 .countdown-item {
@@ -632,7 +640,9 @@ body {
   transition-delay: 1.4s;
 }
 
-
+.story-section .story-decor-right.animate.visible {
+  transition-delay: 1.6s; /* 🔥 ajusta según orden */
+}
 
 @media (prefers-reduced-motion: reduce) {
   .animate, .animate.visible {
@@ -674,9 +684,6 @@ body {
 /* AJUSTE SOLO PARA PC */
 @media (min-width: 769px) {
 
-  .story-section {
-    gap: 40px; /* 🔥 control real del espacio */
-  }
 
   .story-lettering {
     margin: 8px 0;
@@ -748,12 +755,12 @@ body {
 /* ===== FILA SUPERIOR (IZQ + DER) ===== */
 
 .details-flowers-row-top{
-  width: min(90vw, 760px);
+  width: min(100vw, 760px);
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-top: 35px;
   margin-bottom: clamp(-80px, -35vw, 100px);
+  justify-content: flex-start;
  }
 
 
@@ -771,7 +778,7 @@ body {
 ================================ */
 
 .details-flower {
-  width: clamp(65px, 35vw, 240px);
+  width: clamp(70px, 40vw, 240px);
   height: auto;
   display: block;
   object-fit: contain;
