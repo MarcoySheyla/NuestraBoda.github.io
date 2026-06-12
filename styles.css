@@ -312,25 +312,6 @@ body {
   animation: arrowDown 1.5s infinite;
 }
 
-/* Animación más clara arriba → abajo */
-@keyframes arrowDown {
-  0% {
-    transform: translateY(clamp(-18px, -4vh, -10px)) rotate(-45deg);
-    opacity: 0;
-  }
-
-  40% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(clamp(18px, 4vh, 10px)) rotate(-45deg);
-    opacity: 0;
-  }
-}
-
-
-
 
 /* =========================================================
    BOTÓN AUDIO (Floating)
@@ -641,7 +622,7 @@ body {
 }
 
 .story-section .story-decor-right.animate.visible {
-  transition-delay: 1.6s; /* 🔥 ajusta según orden */
+  transition-delay: 1.4s; /* 🔥 ajusta según orden */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -797,6 +778,115 @@ body {
   clip-path: inset(0 0 0 0);
   opacity: 0.8;
 }
+
+/* =========================================================
+   HOJAS CAÍDAS - ANIMACIÓN (secciones 4 y 6)
+   ========================================================= */
+
+/* Asegura que las secciones objetivo permitan posicionar las hojas */
+.it2-section, #itinerario, .final-section {
+  position: relative;
+  overflow: visible;
+}
+
+.leaves-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6; /* por encima de fondos, pero mantén baja opacidad */
+  overflow: visible;
+}
+
+.falling-leaf {
+   position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(25px, 5.25vw, 70px);
+  pointer-events: none;
+  will-change: transform;
+  transform-style: preserve-3d;
+  }
+
+@keyframes leafFall {
+  /* Entrada suave con desvanecimiento */
+  0% {
+    transform: translate3d(0, -10vh, 0) rotateZ(var(--r-start, 0deg)) rotateX(0deg) rotateY(0deg) scale(var(--s, 1));
+    opacity: 0;
+  }
+  
+  /* Fade in rápido */
+  2% {
+    opacity: 0.78;
+  }
+  
+  /* Primera oscilación derecha (suave) */
+  10% {
+    transform: translate3d(calc(var(--amp) * 0.25), 8vh, 0) rotateZ(calc(var(--r-start) + var(--spin) * 0.12)) rotateX(15deg) rotateY(8deg) scale(var(--s, 1));
+    opacity: 0.92;
+  }
+  
+  /* Peak derecha con aceleración vertical */
+  18% {
+    transform: translate3d(calc(var(--amp) * 0.42), 22vh, 0) rotateZ(calc(var(--r-start) + var(--spin) * 0.28)) rotateX(25deg) rotateY(15deg) scale(var(--s, 1));
+    opacity: 0.9;
+  }
+  
+  /* Cambio de dirección (izquierda) */
+  28% {
+    transform: translate3d(calc(var(--amp) * 0.15), 38vh, 0) rotateZ(calc(var(--r-start) + var(--spin) * 0.42)) rotateX(30deg) rotateY(5deg) scale(var(--s, 1));
+    opacity: 0.88;
+  }
+  
+  /* Oscilación izquierda fuerte */
+  38% {
+    transform: translate3d(calc(var(--amp) * -0.38), 52vh, 0) rotateZ(calc(var(--r-start) + var(--spin) * 0.56)) rotateX(28deg) rotateY(-12deg) scale(var(--s, 1));
+    opacity: 0.86;
+  }
+  
+  /* Mid-point: cambio de ritmo, ralentización momentánea */
+  50% {
+    transform: translate3d(calc(var(--amp) * -0.28), 65vh, 0) rotateZ(calc(var(--r-start) + var(--spin) * 0.70)) rotateX(20deg) rotateY(-8deg) scale(var(--s, 1));
+    opacity: 0.83;
+  }
+  
+  /* Segunda oscilación derecha (más lenta, como ráfaga) */
+  62% {
+    transform: translate3d(calc(var(--amp) * 0.08), 77vh, 0) rotateZ(calc(var(--r-start) + var(--spin) * 0.82)) rotateX(24deg) rotateY(6deg) scale(var(--s, 1));
+    opacity: 0.80;
+  }
+  
+  /* Aceleración final: derecha nuevamente */
+  72% {
+    transform: translate3d(calc(var(--amp) * 0.32), 88vh, 0) rotateZ(calc(var(--r-start) + var(--spin) * 0.90)) rotateX(32deg) rotateY(10deg) scale(var(--s, 1));
+    opacity: 0.72;
+  }
+  
+  /* Oscilación izquierda final */
+  82% {
+    transform: translate3d(calc(var(--amp) * -0.15), 100vh, 0) rotateZ(calc(var(--r-start) + var(--spin) * 0.96)) rotateX(28deg) rotateY(-6deg) scale(var(--s, 1));
+    opacity: 0.45;
+  }
+  
+  /* Casi al suelo: movimiento lento y centrado */
+  92% {
+    transform: translate3d(calc(var(--amp) * 0.05), 115vh, 0) rotateZ(calc(var(--r-start) + var(--spin) * 0.99)) rotateX(22deg) rotateY(2deg) scale(var(--s, 1));
+    opacity: 0.15;
+  }
+  
+  /* Desaparición suave */
+  100% {
+    transform: translate3d(var(--amp), 135vh, 0) rotateZ(calc(var(--r-start) + var(--spin))) rotateX(20deg) rotateY(0deg) scale(var(--s, 1));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .falling-leaf {
+    animation: none !important;
+    opacity: 0.12 !important;
+  }
+}
+
 
 /* FLOR 2: DERECHA → IZQUIERDA (6 segundos) */
 .df2 .df3 {

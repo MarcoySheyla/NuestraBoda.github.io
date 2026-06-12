@@ -503,3 +503,194 @@ document.addEventListener("DOMContentLoaded", () => {
 
   it2Els.forEach(el => obs.observe(el));
 });
+
+
+/* =========================================================
+   HOJAS QUE CAEN - Secciones 4 (itinerario) y 6 (final)
+   - Inicia al hacer scroll y se detiene cuando el usuario abandona la página
+   ========================================================= */
+// ========================================
+(() => {
+  "use strict";
+
+  const byId = (id) => document.getElementById(id);
+
+  // ===============================
+  // ✅ HOJAS REALISTAS (NUEVO SISTEMA)
+  // ===============================
+
+  document.addEventListener("DOMContentLoaded", () => {
+    try {
+      const targets = [
+        document.getElementById("itinerario"),
+        document.querySelector(".final-section")
+      ].filter(Boolean);
+
+      if (!targets.length) return;
+
+      const containers = new Map();
+      const intervals = new Map();
+
+      // 🔹 ARRAY GLOBAL
+      const leaves = [];
+      let leafAnimationRunning = false;
+      let lastTime = 0;
+
+      // 🔹 CONTENEDOR
+      const createContainer = (section) => {
+        if (containers.has(section)) return containers.get(section);
+
+        const el = document.createElement("div");
+        el.className = "leaves-container";
+        el.setAttribute("aria-hidden", "true");
+
+        section.appendChild(el);
+        containers.set(section, el);
+
+        return el;
+      };
+
+      // 🔹 CREAR HOJA
+      const createLeaf = (container) => {
+        const el = document.createElement("img");
+        el.src = "img/leaf.png";
+        el.className = "falling-leaf";
+
+        const leaf = {
+          el,
+          x: Math.random() * window.innerWidth,
+          y: -20,
+          vx: (Math.random() - 0.5) * 20,
+          vy: 40 + Math.random() * 15,
+          rotation: Math.random() * 360,
+          vr: (Math.random() - 0.5) * 120,
+          size: 0.6 + Math.random() * 0.6,
+          life: 0,
+          offset: Math.random() * 1000
+        };
+
+        el.style.width = `${40 * leaf.size*0.8}px`;
+        el.style.position = "absolute";
+
+        container.appendChild(el);
+        leaves.push(leaf);
+
+        if (!leafAnimationRunning) {
+          leafAnimationRunning = true;
+          requestAnimationFrame(animateLeaves);
+        }
+      };
+
+      // 🔹 ANIMACIÓN ORGÁNICA
+      const animateLeaves = (time) => {
+        const dt = Math.min((time - lastTime) / 1000, 0.033);
+        lastTime = time;
+
+        for (let i = leaves.length - 1; i >= 0; i--) {
+          const leaf = leaves[i];
+
+          leaf.life += dt;
+
+          // 🌬️ viento realista
+          const windBase = Math.sin(leaf.life * 0.5 + leaf.offset) * 20;
+const windDetail = Math.sin(leaf.life * 2.5 + leaf.offset * 0.3) * 8;
+
+const wind = windBase + windDetail;
+// 🍃 vibración natural de hoja (flutter)
+const flutter = Math.sin(leaf.life * 8 + leaf.offset) * 3;
+leaf.vx += flutter * dt;
+          leaf.vx += wind * dt;
+          leaf.vx *= 0.98;
+
+          leaf.x += leaf.vx * dt * 1.65;
+          leaf.y += leaf.vy * dt * 1.65;
+
+          // rotación irregular
+          leaf.vr += Math.sin(leaf.life * 2) * 2;
+          leaf.rotation += leaf.vr * dt;
+
+          // escala dinámica (profundidad)
+          const scale = 0.85 + Math.sin(leaf.life * 2) * 0.1;
+const rotX = Math.sin(leaf.life * 2 + leaf.offset) * 60;
+const rotY = Math.cos(leaf.life * 1.5 + leaf.offset) * 40;
+
+leaf.el.style.transform = `
+  translate(${leaf.x}px, ${leaf.y}px)
+  rotate(${leaf.rotation}deg)
+  rotateX(${rotX}deg)
+  rotateY(${rotY}deg)
+  scale(${scale})
+`;
+          // ✅ transparencia progresiva
+          const opacity = 0.7 - (leaf.y / window.innerHeight) * 0.6;
+          leaf.el.style.opacity = Math.max(opacity, 0.15);
+
+          // eliminar cuando sale
+          if (leaf.y > window.innerHeight + 100) {
+            leaf.el.remove();
+            leaves.splice(i, 1);
+          }
+        }
+
+        if (leaves.length > 0) {
+          requestAnimationFrame(animateLeaves);
+        } else {
+          leafAnimationRunning = false;
+        }
+      };
+
+      // 🔹 SPAWN
+      const startSpawning = (section) => {
+        if (intervals.has(section)) return;
+
+        const container = createContainer(section);
+
+        const iv = setInterval(() => {
+          createLeaf(container);
+        }, 700 + Math.random() * 800);
+
+        intervals.set(section, iv);
+      };
+
+      // 🔹 STOP
+      const stopSpawning = (section) => {
+        const iv = intervals.get(section);
+        if (iv) {
+          clearInterval(iv);
+          intervals.delete(section);
+        }
+      };
+
+      const stopAllAndClear = () => {
+        intervals.forEach((iv) => clearInterval(iv));
+        intervals.clear();
+
+        leaves.forEach(l => l.el.remove());
+        leaves.length = 0;
+      };
+
+      // 🔹 OBSERVER
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const sec = entry.target;
+          if (entry.isIntersecting) startSpawning(sec);
+          else stopSpawning(sec);
+        });
+      }, { threshold: 0.12 });
+
+      targets.forEach((t) => observer.observe(t));
+
+      // 🔹 PERFORMANCE
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stopAllAndClear();
+      });
+
+      window.addEventListener("pagehide", stopAllAndClear);
+      window.addEventListener("beforeunload", stopAllAndClear);
+
+    } catch (e) {
+      console.warn("Leaf animation failed:", e);
+    }
+  });
+
+})();
