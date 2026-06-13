@@ -736,21 +736,20 @@ body {
 /* ===== FILA SUPERIOR (IZQ + DER) ===== */
 
 .details-flowers-row-top{
-  width: min(100vw, 760px);
+  width: 100vw;
   display: flex;
   align-items: center;
-  margin-top: 35px;
-  margin-bottom: clamp(-80px, -35vw, 100px);
-  justify-content: flex-start;
+  margin-top: 10px;
  }
 
 
 /* ===== FLOR ABAJO (CENTRO) ===== */
 .details-flower-bottom{
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: flex-end;
- 
+  margin-top: clamp(3px, 12vw, 40px);
+  margin-bottom: clamp(35px, 12vw, 40px);
 }
 
 
@@ -759,12 +758,12 @@ body {
 ================================ */
 
 .details-flower {
-  width: clamp(70px, 40vw, 240px);
+  width: clamp(125px, 45vw, 340px);
   height: auto;
   display: block;
   object-fit: contain;
   object-position: center;
-  filter: none;
+  /* 🔥 aumenta brillo */
   will-change: clip-path, opacity, transform;
 }
 
@@ -776,7 +775,40 @@ body {
 
 .df1.visible {
   clip-path: inset(0 0 0 0);
-  opacity: 0.8;
+  opacity: 1;
+}
+
+/* FLOR 2: DERECHA → IZQUIERDA (6 segundos) */
+.df2 {
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 3s ease-out, opacity 6s ease-out;
+}
+
+.df2.visible {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+/* FLOR 3: CENTRO → BORDES + ZOOM (6 segundos) */
+.df3 {
+   clip-path: inset(0 0 0 100%);
+  transition: clip-path 3s ease-out, opacity 6s ease-out;
+}
+
+.df3.visible {
+clip-path: inset(0 0 0 0);
+  opacity: 0.4;
+}
+
+
+.details-section {
+  position: relative;
+  z-index: 1;
+}
+
+.details-section * {
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================================================
@@ -885,29 +917,6 @@ body {
     animation: none !important;
     opacity: 0.12 !important;
   }
-}
-
-
-/* FLOR 2: DERECHA → IZQUIERDA (6 segundos) */
-.df2 .df3 {
-  clip-path: inset(0 0 0 100%);
-  transition: clip-path 3s ease-out, opacity 6s ease-out;
-}
-
-.df2.visible .df3.visible {
-  clip-path: inset(0 0 0 0);
-  opacity: 0.4;
-}
-
-
-.details-section {
-  position: relative;
-  z-index: 1;
-}
-
-.details-section * {
-  position: relative;
-  z-index: 2;
 }
 
   /* =============================
