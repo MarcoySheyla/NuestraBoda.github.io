@@ -37,12 +37,25 @@ if (scrollIndicator) {
   });
 }
 
+// ✅ OBSERVER GLOBAL ÚNICO
+const globalObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      obs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.25 });
+
+document.querySelectorAll(".animate, .it2-row, .it2-section")
+  .forEach(el => globalObserver.observe(el));
 
   // ---------- Helpers ----------
   const byId = (id) => document.getElementById(id);
 
   // ---------- Main ----------
   document.addEventListener("DOMContentLoaded", () => {
+ 
     const container = byId("container");
     const contentPage2 = byId("content-page2");
     const flash = byId("flash");
@@ -124,27 +137,9 @@ if (scrollIndicator) {
 
     // ===== ANIMACIONES (IntersectionObserver) =====
     // NOTA: Las flores se manejan por separado abajo
-const setupAnimations = () => {
-  const els = document.querySelectorAll(".animate");
 
-  if (!els.length) return;
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        obs.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.35,
-    rootMargin: "0px 0px -10% 0px"
-  });
 
-  els.forEach((el) => observer.observe(el));
-};
-
-setupAnimations();
 
     // ===== FLORES (Sistema de animación por scroll) =====
     const setupFlowerAnimations = () => {
@@ -172,11 +167,21 @@ setupAnimations();
       checkFlowersInView();
 
       // Y también al hacer scroll
-      window.addEventListener("scroll", checkFlowersInView, { passive: true });
+      let ticking = false;
+
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      checkFlowersInView();
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
     };
 
     // Ejecutar cuando DOM esté completo
-    setTimeout(() => setupFlowerAnimations(), 200);
+    requestAnimationFrame(() => setupFlowerAnimations());
 
     // ===== CONFETI (BOTÓN APORTACIÓN) =====
     const confettiCanvas = byId("confetti-canvas");
@@ -484,25 +489,7 @@ if (toggleIbam && ibamData) {
 /* =========================================================
    ITINERARIO: activar animación al entrar en pantalla
 ========================================================= */
-document.addEventListener("DOMContentLoaded", () => {
-  const it2Els = document.querySelectorAll(".it2-section, .it2-row");
 
-  if (!("IntersectionObserver" in window)) {
-    it2Els.forEach(el => el.classList.add("visible"));
-    return;
-  }
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add("visible");
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.18 });
-
-  it2Els.forEach(el => obs.observe(el));
-});
 
 
 /* =========================================================
@@ -520,6 +507,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
 
   document.addEventListener("DOMContentLoaded", () => {
+
     try {
       const targets = [
         document.getElementById("itinerario"),
@@ -569,7 +557,7 @@ document.addEventListener("DOMContentLoaded", () => {
           offset: Math.random() * 1000
         };
 
-        el.style.width = `${40 * leaf.size*0.8}px`;
+        el.style.width = `${40 * leaf.size*0.8*1*1}px`;
         el.style.position = "absolute";
 
         container.appendChild(el);
@@ -610,9 +598,9 @@ leaf.vx += flutter * dt;
           leaf.rotation += leaf.vr * dt;
 
           // escala dinámica (profundidad)
-          const scale = 0.85 + Math.sin(leaf.life * 2) * 0.1;
-const rotX = Math.sin(leaf.life * 2 + leaf.offset) * 60;
-const rotY = Math.cos(leaf.life * 1.5 + leaf.offset) * 40;
+          const scale = (0.85 + Math.sin(leaf.life * 2) * 0.1)*1.5 ;
+          const rotX = Math.sin(leaf.life * 2 + leaf.offset) * 60;
+          const rotY = Math.cos(leaf.life * 1.5 + leaf.offset) * 40;
 
 leaf.el.style.transform = `
   translate(${leaf.x}px, ${leaf.y}px)
