@@ -388,7 +388,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: clamp(65px, 24vw, 200px);
+  width: clamp(70px, 26vw, 200px);
   height: auto;
   z-index: 3;
   transform: translate(30%, -20%);
@@ -401,14 +401,14 @@ body {
   align-items: center;
   gap: 12px;
   margin: 0;
-  margin-bottom: clamp(35px, 18vw, 50px);
+  margin-bottom: clamp(25px, 15vw, 40px);
 }
 
 .story-decor-right {
   position: absolute;
-  bottom: -10px;   /* 🔥 sube/baja la imagen */
+  bottom: -5px;   /* 🔥 sube/baja la imagen */
   right: 0px;
-  width: clamp(65px, 24vw, 200px);
+  width: clamp(70px, 26vw, 200px);
   height: auto;
   transform: translate(30%, 20%); /* 🔥 la saca un poco hacia fuera */
   pointer-events: none;
@@ -431,7 +431,7 @@ body {
 }
 
 .story-lettering {
-  width: clamp(65px, 24vw, 200px);
+  width: clamp(70px, 26vw, 200px);
   z-index: 2;
   margin-bottom: clamp(35px, 5vw, 60px);
    right: 0;
@@ -697,30 +697,22 @@ body {
 }
 
 
-
-
 /* =========================================================
     SECCION 3: DETALLES
     ========================================================= */
-
   
 .details-section {
   width: 100%;
   position: relative;
   background-blend-mode: overlay;
   display: flex;
-
   flex-direction: column;
   align-items: center;
-
   /* ✅ ORDEN CORRECTO DE CAPAS */
-
  background: url("./img/bg-section3.png") center / cover no-repeat;
-
   padding: clamp(10px, 3vh, 20px) 0;
   gap: 1px;
 }
-
 
 
 .details-section::before,
@@ -728,16 +720,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-
   /* ✅ AQUÍ CONTROLAS LA TRANSPARENCIA */
   background: rgba(122, 132, 80, 0.65);
-
   pointer-events: none;
   z-index: 1;
 }
-
-
-
 
   /* -----------------------------
     IMÁGENES
@@ -758,7 +745,6 @@ body {
     opacity: 0.9;
   }
 
-  
 /* =========================================================
    FLORES SECCION 3 DETALLES (3 IMAGENES)
    ========================================================= */
