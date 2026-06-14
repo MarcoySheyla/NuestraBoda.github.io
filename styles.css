@@ -10,6 +10,8 @@
 html, body {
   width: 100%;
   height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* =========================================================
@@ -100,7 +102,8 @@ body {
   overflow: hidden;
   background: white;
   touch-action: manipulation;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
 }
 
 .sobre {
@@ -207,7 +210,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: calc(var(--vh) * 100);
+  min-height: 100vh;
   height: auto;
 }
 
@@ -523,6 +526,12 @@ body {
   box-shadow: var(--shadow-card);
   transition: transform 0.3s ease, background 0.3s ease;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .countdown-item {
+    backdrop-filter: none;
+  }
 }
 
 /* ":" SOLO desktop (por defecto) */

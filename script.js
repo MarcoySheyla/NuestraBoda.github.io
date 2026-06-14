@@ -47,7 +47,7 @@ const globalObserver = new IntersectionObserver((entries, obs) => {
   });
 }, { threshold: 0.25 });
 
-document.querySelectorAll(".animate, .it2-row, .it2-section")
+document.querySelectorAll(".animate")
   .forEach(el => globalObserver.observe(el));
 
   // ---------- Helpers ----------
