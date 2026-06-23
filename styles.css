@@ -92,7 +92,7 @@ body {
    SECCIÓN 1: SOBRE (3D ENVELOPE)
    ========================================================= */
 .container {
-  width: 100vw;
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -334,7 +334,7 @@ body {
   cursor: pointer;
   box-shadow: var(--shadow-fab);
   transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px);
 }
 @media (max-width: 768px) {
   .countdown-item {
@@ -389,6 +389,7 @@ body {
 
 .story-corner-img {
   position: absolute;
+  max-width: 100%;
   top: 0;
   right: 0;
   width: clamp(80px, 30vw, 200px);
@@ -403,8 +404,8 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  margin: 0;
-  margin-bottom: clamp(50px, 30vw, 80px);
+  margin-top: clamp(10px, 5vw, 20px);
+  margin-bottom: clamp(40px, 20vw, 60px);
 }
 
 .story-decor-right {
@@ -504,8 +505,8 @@ body {
   position: relative;
   z-index: 2;
   max-width: 550px;
-  margin-TOP: CLAMP(20px, 4vw, 30px);
-  margin-bottom: clamp(60px, 20vw, 90px);
+  margin-top: clamp(40px, 10vw, 60px);
+  margin-bottom: clamp(20px, 5vw, 35px);
 }
 
 .countdown-item {
@@ -649,6 +650,16 @@ body {
   }
 }
 
+
+/* LETRERO */
+.letrero-section.animate.visible {
+  transition-delay: 0.8s;
+}
+
+/* CARRUSEL */
+.carousel-section.animate.visible {
+  transition-delay: 1s;
+}
 /* =========================================================
    MOVIL
    ========================================================= */
@@ -722,6 +733,7 @@ body {
  background: url("./img/bg-section3.png") center / cover no-repeat;
   padding: clamp(10px, 3vh, 20px) 0;
   gap: 1px;
+  z-index: 1;
 }
 
 
@@ -762,7 +774,7 @@ body {
 /* ===== FILA SUPERIOR (IZQ + DER) ===== */
 
 .details-flowers-row-top{
-  width: 100vw;
+  max-width: 100%;
   display: flex;
   align-items: center;
   margin-top: 10px;
@@ -771,7 +783,7 @@ body {
 
 /* ===== FLOR ABAJO (CENTRO) ===== */
 .details-flower-bottom{
-  width: 100vw;
+ width: 100%;
   display: flex;
   justify-content: flex-end;
   margin-top: clamp(3px, 12vw, 40px);
@@ -824,11 +836,6 @@ body {
 .df3.visible {
 clip-path: inset(0 0 0 0);
   opacity: 0.4;
-}
-
-
-.details-section {
-  z-index: 1;
 }
 
 .details-section * {
@@ -1301,9 +1308,6 @@ clip-path: inset(0 0 0 0);
   background-blend-mode: overlay;
  background: url("./img/bg-section5.png") center / cover no-repeat;
   padding: clamp(12px, 4vh, 25px) 0 clamp(30px, 8vh, 60px);
-}
-.details2-section {
-  position: relative;
   z-index: 1;
 }
 
@@ -1534,13 +1538,10 @@ clip-path: inset(0 0 0 0);
 /* 5) Móviles muy pequeños: si no cabe arriba, baja debajo */
 @media (max-width: 480px){
   .gift-pop{
-    gift-pop{
     width: 240px;        /* ✅ tamaño REAL móvil */
     padding: 10px 12px;  /* más compacto */
   }
-
   }
-}
 
 
 /* estado al tocar */
@@ -1937,3 +1938,69 @@ clip-path: inset(0 0 0 0);
 .f4.visible { transition-delay: 1.5s; }
 
 
+/* =========================================================
+   CARRUSEL ENTRE SECCIÓN 2 Y 3
+========================================================= */
+
+.carousel-section {
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  top: -1px;
+  transform: translate3d(0,0,0);
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scrollCarousel 14s linear infinite;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: clamp(160px, 45vw, 280px);
+  margin-right: 3px;
+}
+
+.carousel-wrapper {
+  margin: 0 20px;   /* ✅ espacio izquierda y derecha */
+  overflow: hidden; /* ✅ recorta el carrusel */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: clamp(200px, 55vw, 350px);
+  object-fit: cover;
+  display: block;
+  
+}
+
+/* Animación izquierda infinita */
+@keyframes scrollCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.letrero-section {
+  transform: translate3d(0,0,0);
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: center; /* ✅ centra la imagen */
+}
+
+.letrero-img {
+  width: 45%;        /* ✅ reduce tamaño */
+  max-width: 300px;  /* ✅ límite en pantallas grandes */
+  height: auto;
+  display: block;
+  margin-bottom: 40px ;
+}
