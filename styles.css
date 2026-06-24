@@ -1374,12 +1374,18 @@ clip-path: inset(0 0 0 0);
 /* Texto 2 */
 .color-text-2 {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(16px, 5vw, 24px);
+  font-size: clamp(16px, 5vw, 30px);
   color: #ffffff;
   margin-left: 6px;
+  margin-right: 6px;
 }
 
-
+/* Texto 3 */
+.color-text-3 {
+  font-family: var(--font-serif);
+  font-size: clamp(12px, 2.5vw, 20px);
+  color: #ffffff;
+}
 
 .details2-text{
   font-family: var(--font-serif);
