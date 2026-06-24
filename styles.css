@@ -1816,10 +1816,11 @@ clip-path: inset(0 0 0 0);
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  margin-top: 15px;
-  padding: 0;
   gap: 15px;
+  position: relative;
+  overflow: hidden; /* 🔥 CLAVE TOTAL */
+  padding-top: 20px; /* espacio para el rasgado */
+
 }
 
 /* =========================
@@ -1845,7 +1846,7 @@ clip-path: inset(0 0 0 0);
 ========================= */
 .final-lettering {
   width: clamp(150px, 40vw, 240px);
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .final-lettering img {
@@ -2004,3 +2005,65 @@ clip-path: inset(0 0 0 0);
   display: block;
   margin-bottom: 40px ;
 }
+
+
+
+
+/* =========================================================
+   PAPEL RASGADO - ESCALADO 30% (FIX FINAL)
+========================================================= */
+
+.final-torn-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 10px;
+}
+
+/* ✅ AHORA MÁS PEQUEÑA (30%) */
+.final-torn-img {
+  width: min(56vw, 225px); /* 🔥 antes ~360px → reducido */
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== ARRIBA ===== */
+.final-torn-wrapper::before {
+  content: "";
+  position: absolute;
+  top:0; /* 🔥 ajustado al nuevo tamaño */
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(56vw, 225px); /* ✅ MISMO ANCHO QUE LA FOTO */
+  height: 70px; /* 🔥 reducido */
+  background: url("img/torn-top.png") top center no-repeat;
+  background-size: 100% auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ===== ABAJO ===== */
+.final-torn-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* 🔥 ajustado */
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(56vw, 225px); /* ✅ MISMO ANCHO */
+  height: 70px;
+  background: url("img/torn-bottom.png") bottom center no-repeat;
+  background-size: 100% auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+.final-torn-wrapper::before,
+.final-torn-wrapper::after {
+  transform: translateX(-50%) scale(1.02);
+}
+
+
+
